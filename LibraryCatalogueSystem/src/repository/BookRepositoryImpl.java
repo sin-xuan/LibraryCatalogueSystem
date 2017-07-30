@@ -5,7 +5,7 @@
  */
 package repository;
 
-import entities.Book;
+import repository.entities.Book;
 import java.util.ArrayList;
 import java.util.List;
 
