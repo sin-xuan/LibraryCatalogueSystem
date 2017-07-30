@@ -20,9 +20,9 @@ public class BookRepositoryFactory {
     private static BookRepository createInstance() {
         try{
             
-            Properties repositoryProperties = new Properties();
-            repositoryProperties.loadFromXML(new FileInputStream(new File("repository-settings.properties")));
-            return (BookRepository)Class.forName(repositoryProperties.getProperty("repository.implementation.use")).newInstance();         
+            Properties repositoryBooks = new Properties();
+            repositoryBooks.loadFromXML(new FileInputStream(new File("repository-settings.books")));
+            return (BookRepository)Class.forName(repositoryBooks.getProperty("repository.implementation.use")).newInstance();         
         }
         catch (IOException | ClassNotFoundException | IllegalAccessException | InstantiationException ex)
         {
