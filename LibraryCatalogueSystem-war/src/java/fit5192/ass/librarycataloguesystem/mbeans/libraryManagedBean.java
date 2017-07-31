@@ -6,6 +6,7 @@
 package fit5192.ass.librarycataloguesystem.mbeans;
 
 import fit5192.ass.librarycataloguesystem.BookRepository;
+import fit5192.ass.librarycataloguesystem.navigation.Navigation;
 import fit5192.ass.repository.entities.Book;
 import java.io.Serializable;
 import javax.inject.Named;
@@ -20,19 +21,19 @@ import javax.enterprise.context.ApplicationScoped;
 public class libraryManagedBean implements Serializable{
 
     public static final String APP_TITLE="Library Catalogue System";
-    private BookRepository borrowbook;
+    private BookRepository searchbook;
     private Book book;
 
-    public BookRepository getBorrowbook() {
-        return borrowbook;
+    public BookRepository getSearchbook() {
+        return searchbook;
     }
 
     public Book getBook() {
         return book;
     }
 
-    public void setBorrowbook(BookRepository borrowbook) {
-        this.borrowbook = borrowbook;
+    public void setSearchbook(BookRepository searchbook) {
+        this.searchbook = searchbook;
     }
 
     public void setBook(Book book) {
@@ -46,5 +47,8 @@ public class libraryManagedBean implements Serializable{
     public libraryManagedBean() {
         this.book=new Book();
     }
-    
+    public String SearchBook() throws Exception{
+       this.searchbook.searchBookByAttributes(book.getTitle(), book.getAuthors(),book.getCallnumber(), book.getType());
+       return Navigation.index.toString();
+    }
 }

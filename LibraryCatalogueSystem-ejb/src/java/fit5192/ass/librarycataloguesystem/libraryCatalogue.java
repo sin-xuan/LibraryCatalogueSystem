@@ -52,11 +52,11 @@ public class libraryCatalogue implements BookRepository{
     }
     
     @Override
-    public List<Book> searchBookByAttributes(String title, String callnumber, String type) throws Exception{
+    public List<Book> searchBookByAttributes(String title,String authors, String callnumber, String type) throws Exception{
     
          List<Book> booksearch=new ArrayList<>(this.booksearch.size());
         for (Book book : this.books) {
-            if (book.getTitle().equals(title) && book.getCallnumber().equals(callnumber) && book.getType().equals(type)) {
+            if (book.getTitle().equals(title) && book.getAuthors().equals(authors)&& book.getCallnumber().equals(callnumber) && book.getType().equals(type)) {
                 booksearch.add(new Book(book));
                 
             }

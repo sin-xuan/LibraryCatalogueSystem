@@ -30,7 +30,7 @@ public class LibraryCatalogueSystem {
     
     public void createBooks() {
         try {
-            this.bookRepository.addBook(new Book(1,"156205533X", "133-J41", "Java!", "Tim. Ritchey", "New-Riders-Pub", "General","books.google.com.hk/books?id=HsktAAAAYAAJ&source=gbs_ViewAPI&redir_esc=y", "Web server", "books.google.com.hk/books?id=HsktAAAAYAAJ&source=gbs_ViewAPI&redir_esc=y"));
+            this.bookRepository.addBook(new Book(1,"156205533X", "133-J41", "Java!", "Tim.Ritchey", "New-Riders-Pub", "General","books.google.com.hk/books?id=HsktAAAAYAAJ&source=gbs_ViewAPI&redir_esc=y", "Web server", "books.google.com.hk/books?id=HsktAAAAYAAJ&source=gbs_ViewAPI&redir_esc=y"));
             
             System.out.println("1 book added successfully");
         } catch (Exception ex) {
@@ -67,10 +67,11 @@ public class LibraryCatalogueSystem {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the title, callnumber and type of the book you want to search: ");
         String title = scanner.next();
+        String authors= scanner.next();
         String callnumber = scanner.next();
         String type = scanner.next();
         try {
-            List<Book> book = this.bookRepository.searchBookByAttributes(title,callnumber,type );
+            List<Book> book = this.bookRepository.searchBookByAttributes(title,authors,callnumber,type );
             if (book != null) {
                 System.out.println(book.toString());
             } else {
