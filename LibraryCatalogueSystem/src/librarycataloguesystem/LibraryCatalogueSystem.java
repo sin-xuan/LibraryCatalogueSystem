@@ -29,7 +29,7 @@ public class LibraryCatalogueSystem {
     
     public void createBooks() {
         try {
-            this.bookRepository.addBook(new Book(1,"156205533X", "133 J41", "Java!", "Tim. Ritchey", "New-Riders-Pub", "General","books.google.com.hk/books?id=HsktAAAAYAAJ&source=gbs_ViewAPI&redir_esc=y", "Web server", "books.google.com.hk/books?id=HsktAAAAYAAJ&source=gbs_ViewAPI&redir_esc=y"));
+            this.bookRepository.addBook(new Book(1,"156205533X", "133-J41", "Java!", "Tim. Ritchey", "New-Riders-Pub", "General","books.google.com.hk/books?id=HsktAAAAYAAJ&source=gbs_ViewAPI&redir_esc=y", "Web server", "books.google.com.hk/books?id=HsktAAAAYAAJ&source=gbs_ViewAPI&redir_esc=y"));
             
             System.out.println("1 book added successfully");
         } catch (Exception ex) {
@@ -62,13 +62,29 @@ public class LibraryCatalogueSystem {
             Logger.getLogger(LibraryCatalogueSystem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
+     public void searchBookByAttributes() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the title, callnumber and type of the book you want to search: ");
+        String title = scanner.next();
+        String callnumber = scanner.next();
+        String type = scanner.next();
+        try {
+            Book book = this.bookRepository.searchBookByAttributes(title,callnumber,type );
+            if (book != null) {
+                System.out.println(book.partToString());
+            } else {
+                System.out.println("Book not found");
+            }  
+        } catch (Exception ex) {
+            System.out.println("Failed to search property by ID: " + ex.getMessage());
+        }
+    }
      public void run() {
         this.createBooks();
         System.out.println("***********************************************************************************");
         this.displayAllBooks();
         System.out.println("***********************************************************************************");
-        this.searchBookByBid();
+        this.searchBookByAttributes();
     }
 
     public String getName() {

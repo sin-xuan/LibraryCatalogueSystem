@@ -146,4 +146,8 @@ public class Book {
     public String toString() {
         return bid + " " +isbn + " " + callnumber + " " + title + " "+ authors + " " + publisher + " "+ type + " " + thumbnail + " "+ description + " "+ previewurl;
     }
+    
+    public String partToString(){
+       return title + " " + authors + " " +callnumber;
+    }
 }

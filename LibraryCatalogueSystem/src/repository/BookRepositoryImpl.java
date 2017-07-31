@@ -49,4 +49,19 @@ public class BookRepositoryImpl implements BookRepository{
         return books;
     }
     
+    @Override
+    public Book searchBookByAttributes(String title, String callnumber, String type) throws Exception{
+    
+        for (Book book : this.books) {
+            if (book.getTitle().equals(title) && book.getCallnumber().equals(callnumber) && book.getType().equals(type)) {
+                return book;
+            }
+        }
+        
+        return null;
+    
+    
+    
+    }
+    
 }

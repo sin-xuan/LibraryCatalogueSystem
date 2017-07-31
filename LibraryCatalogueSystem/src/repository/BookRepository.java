@@ -34,4 +34,14 @@ public interface BookRepository {
      * @return all the properties in the repository
      */
     public List<Book> getAllBooks() throws Exception;
+    
+    /**
+     * Search for a property by its title, callnumber and type
+     *
+     * @param title - the title of the book to search for
+     * @param callnumber - the callnumber of the book to search for
+     * @param typr - the type of the book to search for
+     * @return the book found
+     */
+    public Book searchBookByAttributes(String title, String callnumber, String type) throws Exception;
 }
