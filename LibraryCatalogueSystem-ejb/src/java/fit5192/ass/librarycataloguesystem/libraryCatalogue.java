@@ -16,10 +16,12 @@ import java.util.List;
 public class libraryCatalogue implements BookRepository{
 
     private final List<Book> books;
+    private final List<Book> booksearch;
 
     protected libraryCatalogue()
     {
         books = new ArrayList<>();
+        booksearch= new ArrayList<>();
     }
     
     
@@ -50,18 +52,17 @@ public class libraryCatalogue implements BookRepository{
     }
     
     @Override
-    public Book searchBookByAttributes(String title, String callnumber, String type) throws Exception{
+    public List<Book> searchBookByAttributes(String title, String callnumber, String type) throws Exception{
     
+         List<Book> booksearch=new ArrayList<>(this.booksearch.size());
         for (Book book : this.books) {
             if (book.getTitle().equals(title) && book.getCallnumber().equals(callnumber) && book.getType().equals(type)) {
-                return book;
+                booksearch.add(new Book(book));
+                
             }
         }
         
-        return null;
-    
-    
-    
+        return booksearch;
     }
     
 }
