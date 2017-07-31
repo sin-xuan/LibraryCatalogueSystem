@@ -1,0 +1,11 @@
+/* AUTOMATICALLY GENERATED ON Wed Jul 26 11:40:13 CST 2017*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.EJBMethodPermission "MonthlyPaymentCalculatorBean", "calculate,Remote,double,int,double";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "MonthlyPaymentCalculatorBean", "**";
+};
+

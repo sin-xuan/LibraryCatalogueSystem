@@ -5,6 +5,7 @@
  */
 package librarycataloguesystem;
 
+import java.util.List;
 import repository.entities.Book;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -55,8 +56,8 @@ public class LibraryCatalogueSystem {
      
      public void displayAllBooks() {
         try {
-            for (Book property : this.bookRepository.getAllBooks()) {
-                System.out.println(property.toString());
+            for (Book book : this.bookRepository.getAllBooks()) {
+                System.out.println(book.toString());
             }
         } catch (Exception ex) {
             Logger.getLogger(LibraryCatalogueSystem.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,9 +70,9 @@ public class LibraryCatalogueSystem {
         String callnumber = scanner.next();
         String type = scanner.next();
         try {
-            Book book = this.bookRepository.searchBookByAttributes(title,callnumber,type );
+            List<Book> book = this.bookRepository.searchBookByAttributes(title,callnumber,type );
             if (book != null) {
-                System.out.println(book.partToString());
+                System.out.println(book.toString());
             } else {
                 System.out.println("Book not found");
             }  

@@ -1,0 +1,44 @@
+/* AUTOMATICALLY GENERATED ON Fri May 05 13:59:59 CST 2017*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "count,Local,";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "findAll,Local,";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "create,Local,student.Course";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "edit,Local,java.lang.String,student.Course";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "edit,Local,java.lang.String,student.Student";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "edit,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "create,Local,student.Student";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "find,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "findByStudname,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "find,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "create,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "findRange,Local,java.lang.Integer,java.lang.Integer";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "create,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "findByCourseName,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "findAll,Local,";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "findByStudpostcode,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "remove,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "findByLikePostcode,Local,";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "count,Local,";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "findByCourse,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "remove,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "countREST,Local,";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "findByNameANDCode,Local,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "edit,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "findRange,Local,java.lang.Integer,java.lang.Integer";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "find,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "remove,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "countREST,Local,";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "find,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "findAllstudents,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "findRange,Local,int[]";
+  permission javax.security.jacc.EJBMethodPermission "StudentFacadeREST", "remove,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "CourseFacadeREST", "findRange,Local,int[]";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "StudentFacadeREST", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "CourseFacadeREST", "**";
+};
+
