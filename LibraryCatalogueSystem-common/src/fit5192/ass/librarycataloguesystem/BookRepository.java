@@ -7,11 +7,13 @@ package fit5192.ass.librarycataloguesystem;
 
 import fit5192.ass.repository.entities.Book;
 import java.util.List;
+import javax.ejb.Remote;
 
 /**
  *
  * @author zx
  */
+@Remote
 public interface BookRepository {
     /**
      * Add the property being passed as parameter into the repository

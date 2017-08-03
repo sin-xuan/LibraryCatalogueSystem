@@ -48,6 +48,7 @@ public class libraryManagedBean implements Serializable{
         this.book=new Book();
     }
     public String SearchBook() throws Exception{
+        
        this.searchbook.searchBookByAttributes(book.getTitle(), book.getAuthors(),book.getCallnumber(), book.getType());
        return Navigation.index.toString();
     }

@@ -31,7 +31,7 @@
                 <p>Type: <h:message for="typeOfBook" styleClass="error"/></p>
                 <h:inputText id="typeOfBook" label="type" size ="32" value="#{LibraryManagedBean.book.type}" required="true" requiredMessage="The type cannot be empty!"></h:inputText>
                 <!--form submit button-->
-                <h:commandButton id="submit" value="Submit" action="response"/>
+                <h:commandButton id="submit" value="Submit" action="#{LibraryManagedBean.SearchBook()}"/>
                 </form>
                 <!--end form-->
         </article>

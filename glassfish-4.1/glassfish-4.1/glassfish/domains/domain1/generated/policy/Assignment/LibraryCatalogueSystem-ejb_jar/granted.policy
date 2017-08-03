@@ -1,0 +1,14 @@
+/* AUTOMATICALLY GENERATED ON Thu Aug 03 09:58:54 CST 2017*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "getAllBooks,Remote,";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "addBook,Remote,fit5192.ass.repository.entities.Book";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByBid,Remote,int";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByAttributes,Remote,java.lang.String,java.lang.String,java.lang.String,java.lang.String";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "JPALibraryCatalogueSystemImpl", "**";
+};
+

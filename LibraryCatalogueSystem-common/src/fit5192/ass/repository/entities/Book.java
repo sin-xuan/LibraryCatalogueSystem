@@ -5,11 +5,27 @@
  */
 package fit5192.ass.repository.entities;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
 /**
  *
  * @author zx
  */
-public class Book {
+  @Entity
+/* @NamedQueries({@NamedQuery(name=Book.FIND_BY_ATTRIBUTES,query="SELECT b FROM Book b WHERE b.title=:title AND b.authors=:authors AND b.callnumber=: callnumber AND b.type=:type")
+, @NamedQuery(name = Book.FIND_ALL,query="SELECT b FROM Book b")})*/
+@NamedQueries({@NamedQuery(name = Book.FIND_ALL,query="SELECT b FROM Book b")})
+public class Book implements Serializable{
+    
+   // public static final String FIND_BY_ATTRIBUTES="Property.search";
+   public static final String FIND_ALL="Book.getAll";
+    
     private int bid;
     private String isbn;
     private String callnumber;
@@ -68,7 +84,19 @@ public class Book {
         this.description =description;
         this.previewurl =previewurl;
     }
+
+    public Book(String title, String authors, String callnumber, String type) {
+        this.title = title;
+        this.authors= authors;
+        this.callnumber = callnumber;
+        this.type=type;
+    }
+
+   
     
+    @Id
+    @GeneratedValue
+    @Column(name="bid")
     public int getBid(){
         return bid;
     }
@@ -76,6 +104,7 @@ public class Book {
        this.bid = bid;
     }
     
+    @Column(name="isbn")
     public String getIsbn(){
        return isbn;
     }
@@ -83,6 +112,7 @@ public class Book {
       this.isbn= isbn;
     }
     
+    @Column(name="callnumber")
     public String getCallnumber(){
        return callnumber;
     }
@@ -90,6 +120,7 @@ public class Book {
        this.callnumber = callnumber;
     }
     
+    @Column(name="title")
     public String getTitle(){
       return title;
     }
@@ -97,6 +128,7 @@ public class Book {
        this.title= title;
     }
     
+    @Column(name="authors")
     public String getAuthors(){
         return authors;
     }
@@ -104,6 +136,7 @@ public class Book {
        this.authors= authors;
     }
     
+    @Column(name="publisher")
     public String getPublisher(){
         return publisher;
     }
@@ -111,6 +144,7 @@ public class Book {
         this.publisher = publisher;
     }
     
+    @Column(name="type")
     public String getType(){
         return type;
     }
@@ -118,6 +152,7 @@ public class Book {
         this.type = type;
     }
     
+    @Column(name="thumbnail")
     public String getThumbnail(){
        return thumbnail;
     }
@@ -125,6 +160,7 @@ public class Book {
        this.thumbnail = thumbnail;
     }
     
+    @Column(name="description")
     public String getDescription(){
         return description;
     }
@@ -132,6 +168,7 @@ public class Book {
         this.description= description;
     }
     
+    @Column(name="previewurl")
     public String getPreviewurl(){
         return previewurl;
     }
@@ -146,6 +183,7 @@ public class Book {
     public String toString() {
         return bid + " " +isbn + " " + callnumber + " " + title + " "+ authors + " " + publisher + " "+ type + " " + thumbnail + " "+ description + " "+ previewurl;
     }
+    
     
     public String partToString(){
        return title + " " + authors + " " +callnumber;
