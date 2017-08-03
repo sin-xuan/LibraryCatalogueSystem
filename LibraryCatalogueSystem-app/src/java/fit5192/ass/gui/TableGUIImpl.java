@@ -12,6 +12,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Set;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -94,7 +95,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         this.titleTextField = new JTextField();
         this.authorsTextField = new JTextField();
         this.callnumberTextField = new JTextField();
-        this.detailsTextField = new JTextField();
+        this.detailsTextField = new JTextField(10);
        // this.typeTextField = new JTextField();
         
         // create table
@@ -103,13 +104,13 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         this.bookTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
         TableColumnModel bookTableColumnModel = this.bookTable.getColumnModel();
-        bookTableColumnModel.getColumn(0).setPreferredWidth(100);
-        bookTableColumnModel.getColumn(1).setPreferredWidth(100);
-        bookTableColumnModel.getColumn(2).setPreferredWidth(100);
+        bookTableColumnModel.getColumn(0).setPreferredWidth(200);
+        bookTableColumnModel.getColumn(1).setPreferredWidth(270);
+        bookTableColumnModel.getColumn(2).setPreferredWidth(250);
         
         //create combobox
         
-        this.typeComboBox = new JComboBox(new String[]{"General", "Reserve"});
+        this.typeComboBox = new JComboBox(new String[]{" ","General", "Reserve","a","bb"});
         
         // create panels
         this.inputPanel = new JPanel();
@@ -120,7 +121,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         container.setLayout(new BorderLayout());
         this.inputPanel.setLayout(new GridLayout(4,2));
         this.buttonPanel.setLayout(new GridLayout(1,2));
-        this.detailsPanel.setLayout(new GridLayout(1,1));
+        this.detailsPanel.setLayout(new GridLayout(5,1));
         
         // add action listeners
         this.closeButton.addActionListener(actionListener);
@@ -145,11 +146,13 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         this.detailsPanel.add(detailsTextField);
         
         
+        
+        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         // add panels to content pane
-        container.add(inputPanel,BorderLayout.NORTH);
-        container.add(new JScrollPane(this.bookTable), BorderLayout.WEST);
-        container.add(detailsPanel,BorderLayout.EAST);
-        container.add(buttonPanel,BorderLayout.SOUTH);
+        container.add(this.inputPanel);
+        container.add(new JScrollPane(this.bookTable));
+        container.add(this.detailsPanel);
+        container.add(this.buttonPanel);
         
         
         
@@ -272,13 +275,36 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
                         this.callnumberTextField.getText(), (String) this.typeComboBox.getSelectedItem());
     }
 
-    
+    @Override
+    public String getBookTitle(){
+    String title = this.titleTextField.getText();
+    return title == null || title.isEmpty()? null:title;
+    }
 
+    @Override
+    public String getBookAuthors(){
+    String authors = this.authorsTextField.getText();
+    return authors == null || authors.isEmpty()? null:authors;
+    }
+    
+    @Override
+    public String getBookCallnumber(){
+    String callnumber = this.callnumberTextField.getText();
+    return callnumber == null || callnumber.isEmpty()? null:callnumber;
+    }
+    
+    @Override
+    public String getBookType(){
+    String type =this.typeComboBox.getSelectedItem().toString();
+    return type == null || type.isEmpty()? null:type;
+    }
+    
+    
     @Override
     public boolean isBookSelected() {
         return (this.bookTable.getSelectedRow() >= 0);
     }
-   
+   /*
        public static void main(String args[]) {
 
        // Create and display the form 
@@ -289,6 +315,6 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
             }
         });
     } 
-
+*/
 
 }

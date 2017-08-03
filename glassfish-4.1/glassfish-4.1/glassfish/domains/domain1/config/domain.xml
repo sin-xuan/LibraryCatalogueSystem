@@ -2,13 +2,13 @@
   <security-configurations>
     <authentication-service default="true" name="adminAuth" use-password-credential="true">
       <security-provider provider-name="adminSpc" name="spcrealm" type="LoginModule">
-        <login-module-config module-class="com.sun.enterprise.admin.util.AdminLoginModule" control-flag="sufficient" name="adminSpecialLM">
+        <login-module-config control-flag="sufficient" module-class="com.sun.enterprise.admin.util.AdminLoginModule" name="adminSpecialLM">
           <property name="config" value="server-config"></property>
           <property name="auth-realm" value="admin-realm"></property>
         </login-module-config>
       </security-provider>
       <security-provider provider-name="adminFile" name="filerealm" type="LoginModule">
-        <login-module-config module-class="com.sun.enterprise.security.auth.login.FileLoginModule" control-flag="sufficient" name="adminFileLM">
+        <login-module-config control-flag="sufficient" module-class="com.sun.enterprise.security.auth.login.FileLoginModule" name="adminFileLM">
           <property name="config" value="server-config"></property>
           <property name="auth-realm" value="admin-realm"></property>
         </login-module-config>
@@ -56,7 +56,7 @@
       <property name="URL" value="jdbc:derby://localhost:1527/sample"></property>
       <property name="Password" value="app"></property>
     </jdbc-connection-pool>
-    <connector-connection-pool resource-adapter-name="jmsra" max-pool-size="250" steady-pool-size="1" name="jms/__defaultConnectionFactory-Connection-Pool" connection-definition-name="javax.jms.ConnectionFactory"></connector-connection-pool>
+    <connector-connection-pool max-pool-size="250" resource-adapter-name="jmsra" steady-pool-size="1" name="jms/__defaultConnectionFactory-Connection-Pool" connection-definition-name="javax.jms.ConnectionFactory"></connector-connection-pool>
     <connector-resource pool-name="jms/__defaultConnectionFactory-Connection-Pool" object-type="system-all-req" jndi-name="jms/__defaultConnectionFactory"></connector-resource>
     <context-service object-type="system-all" jndi-name="concurrent/__defaultContextService"></context-service>
     <managed-executor-service object-type="system-all" jndi-name="concurrent/__defaultManagedExecutorService"></managed-executor-service>
@@ -109,8 +109,8 @@
       <application-ref ref="Lab5" virtual-servers="server"></application-ref>
       <application-ref ref="Tutorial5" virtual-servers="server"></application-ref>
       <application-ref ref="Lab6" virtual-servers="server"></application-ref>
-      <application-ref ref="Assignment" virtual-servers="server"></application-ref>
       <application-ref ref="LibraryCatalogueSystem-app" virtual-servers="server"></application-ref>
+      <application-ref ref="Assignment" virtual-servers="server"></application-ref>
       <resource-ref ref="jdbc/__TimerPool"></resource-ref>
       <resource-ref ref="jdbc/__default"></resource-ref>
       <resource-ref ref="jdbc/sample"></resource-ref>
@@ -157,7 +157,7 @@
       <transaction-service tx-log-dir="${com.sun.aas.instanceRoot}/logs"></transaction-service>
       <batch-runtime-configuration></batch-runtime-configuration>
       <jms-service default-jms-host="default_JMS_host" type="EMBEDDED">
-        <jms-host port="${JMS_PROVIDER_PORT}" name="default_JMS_host" host="localhost"></jms-host>
+        <jms-host port="${JMS_PROVIDER_PORT}" host="localhost" name="default_JMS_host"></jms-host>
       </jms-service>
       <cdi-service></cdi-service>
       <web-container>
@@ -296,7 +296,7 @@
         </transports>
       </network-config>
       <thread-pools>
-        <thread-pool name="admin-thread-pool" max-thread-pool-size="50" max-queue-size="256"></thread-pool>
+        <thread-pool name="admin-thread-pool" max-queue-size="256" max-thread-pool-size="50"></thread-pool>
         <thread-pool name="http-thread-pool"></thread-pool>
         <thread-pool name="thread-pool-1" max-thread-pool-size="200"></thread-pool>
       </thread-pools>
@@ -345,7 +345,7 @@
       </ejb-container>
       <mdb-container></mdb-container>
       <jms-service addresslist-behavior="priority" default-jms-host="default_JMS_host" type="EMBEDDED">
-        <jms-host port="${JMS_PROVIDER_PORT}" name="default_JMS_host" host="localhost"></jms-host>
+        <jms-host port="${JMS_PROVIDER_PORT}" host="localhost" name="default_JMS_host"></jms-host>
       </jms-service>
       <log-service file="${com.sun.aas.instanceRoot}/logs/server.log" log-rotation-limit-in-bytes="2000000">
         <module-log-levels></module-log-levels>
@@ -511,7 +511,7 @@
   </secure-admin>
   <clusters></clusters>
   <applications>
-    <application context-root="/SpellCheckService" object-type="user" name="SpellCheckService" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/SpellCheckService/build/web/">
+    <application context-root="/SpellCheckService" object-type="user" directory-deployed="true" name="SpellCheckService" location="file:/C:/Users/hhh/Documents/NetBeansProjects/SpellCheckService/build/web/">
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/SpellCheckService/build/web/"></property>
       <property name="archiveType" value="war"></property>
       <property name="defaultAppName" value="web"></property>
@@ -521,7 +521,7 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application context-root="/RestClient" object-type="user" directory-deployed="true" name="RestClient" location="file:/C:/Users/hhh/Documents/NetBeansProjects/RestClient/build/web/">
+    <application context-root="/RestClient" object-type="user" name="RestClient" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/RestClient/build/web/">
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/RestClient/build/web/"></property>
       <property name="archiveType" value="war"></property>
       <property name="defaultAppName" value="web"></property>
@@ -530,7 +530,7 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application context-root="/PlayerServer" object-type="user" directory-deployed="true" name="PlayerServer" location="file:/C:/Users/hhh/Documents/NetBeansProjects/PlayerServer/build/web/">
+    <application context-root="/PlayerServer" object-type="user" name="PlayerServer" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/PlayerServer/build/web/">
       <property name="archiveType" value="war"></property>
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/PlayerServer/build/web/"></property>
       <property name="org.glassfish.ejb.container.application_unique_id" value="97574323596361728"></property>
@@ -557,7 +557,7 @@
         <jdbc-resource pool-name="java:app/derby_net_playerDB_johnPool" jndi-name="java:app/jdbc/playerDB"></jdbc-resource>
       </resources>
     </application>
-    <application context-root="/JavaScriptREST" object-type="user" name="JavaScriptREST" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/JavaScriptREST/build/web/">
+    <application context-root="/JavaScriptREST" object-type="user" directory-deployed="true" name="JavaScriptREST" location="file:/C:/Users/hhh/Documents/NetBeansProjects/JavaScriptREST/build/web/">
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/JavaScriptREST/build/web/"></property>
       <property name="archiveType" value="war"></property>
       <property name="defaultAppName" value="web"></property>
@@ -566,7 +566,7 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application context-root="/FriendsDB" object-type="user" name="FriendsDB" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/FriendsDB/build/web/">
+    <application context-root="/FriendsDB" object-type="user" directory-deployed="true" name="FriendsDB" location="file:/C:/Users/hhh/Documents/NetBeansProjects/FriendsDB/build/web/">
       <property name="archiveType" value="war"></property>
       <property name="org.glassfish.ejb.startup.keepstate" value="true"></property>
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/FriendsDB/build/web/"></property>
@@ -595,7 +595,7 @@
         <jdbc-resource pool-name="java:app/derby_net_FriendsDB_xuechunPool" jndi-name="java:app/jdbc/friends"></jdbc-resource>
       </resources>
     </application>
-    <application context-root="/HelloWorldWebApplication" object-type="user" name="HelloWorldWebApplication" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/HelloWorldWebApplication/build/web/">
+    <application context-root="/HelloWorldWebApplication" object-type="user" directory-deployed="true" name="HelloWorldWebApplication" location="file:/C:/Users/hhh/Documents/NetBeansProjects/HelloWorldWebApplication/build/web/">
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/HelloWorldWebApplication/build/web/"></property>
       <property name="archiveType" value="war"></property>
       <property name="defaultAppName" value="web"></property>
@@ -605,7 +605,7 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application context-root="/STUDENTCOURSE" object-type="user" directory-deployed="true" name="STUDENTCOURSE" location="file:/C:/Users/hhh/Documents/NetBeansProjects/STUDENTCOURSE/build/web/">
+    <application context-root="/STUDENTCOURSE" object-type="user" name="STUDENTCOURSE" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/STUDENTCOURSE/build/web/">
       <property name="archiveType" value="war"></property>
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/STUDENTCOURSE/build/web/"></property>
       <property name="org.glassfish.ejb.container.application_unique_id" value="97908127172919296"></property>
@@ -633,7 +633,7 @@
         <jdbc-resource pool-name="java:app/derby_net_STUDENT_tracyPool" jndi-name="java:app/student"></jdbc-resource>
       </resources>
     </application>
-    <application context-root="/MonashFriendFinder" object-type="user" name="MonashFriendFinder" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/MonashFriendFinder/build/web/">
+    <application context-root="/MonashFriendFinder" object-type="user" directory-deployed="true" name="MonashFriendFinder" location="file:/C:/Users/hhh/Documents/NetBeansProjects/MonashFriendFinder/build/web/">
       <property name="archiveType" value="war"></property>
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/MonashFriendFinder/build/web/"></property>
       <property name="org.glassfish.ejb.container.application_unique_id" value="97756190400512000"></property>
@@ -660,7 +660,7 @@
         <jdbc-resource pool-name="java:app/mysql_monashfriendfinder_rootPool" jndi-name="java:app/monashfriendfinder"></jdbc-resource>
       </resources>
     </application>
-    <application context-root="/MonashFriendFind2" object-type="user" directory-deployed="true" name="MonashFriendFind" location="file:/C:/Users/hhh/Desktop/mobile/phase2/MonashFriendFind2/build/web/">
+    <application context-root="/MonashFriendFind2" object-type="user" name="MonashFriendFind" directory-deployed="true" location="file:/C:/Users/hhh/Desktop/mobile/phase2/MonashFriendFind2/build/web/">
       <property name="archiveType" value="war"></property>
       <property name="org.glassfish.ejb.startup.keepstate" value="true"></property>
       <property name="appLocation" value="file:/C:/Users/hhh/Desktop/mobile/phase2/MonashFriendFind2/build/web/"></property>
@@ -689,7 +689,7 @@
         <jdbc-resource pool-name="java:app/mysql_monash_rootPool" jndi-name="java:app/monash"></jdbc-resource>
       </resources>
     </application>
-    <application context-root="/Week2TutorialExerciseStudent-war" object-type="user" name="Week2TutorialExerciseStudent" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/Week2TutorialExerciseStudent/dist/gfdeploy/Week2TutorialExerciseStudent/">
+    <application context-root="/Week2TutorialExerciseStudent-war" object-type="user" directory-deployed="true" name="Week2TutorialExerciseStudent" location="file:/C:/Users/hhh/Documents/NetBeansProjects/Week2TutorialExerciseStudent/dist/gfdeploy/Week2TutorialExerciseStudent/">
       <property name="isComposite" value="true"></property>
       <property name="generatedArtifact.Week2TutorialExerciseStudentClient/Week2TutorialExerciseStudent-appclient.jar" value="file:/E:/Glassfish/glassfish-4.1/glassfish/domains/domain1/generated/xml/Week2TutorialExerciseStudent/Week2TutorialExerciseStudent-appclient_jar/Week2TutorialExerciseStudent-appclient.jar"></property>
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/Week2TutorialExerciseStudent/dist/gfdeploy/Week2TutorialExerciseStudent/"></property>
@@ -719,7 +719,7 @@
       </module>
       <engine sniffer="ear"></engine>
     </application>
-    <application context-root="/Lab5" object-type="user" directory-deployed="true" name="Lab5" location="file:/F:/课程/暑假学期/Enterprise/Day5/Week5TutorialExerciseSolution/Lab5sol/build/web/">
+    <application context-root="/Lab5" object-type="user" name="Lab5" directory-deployed="true" location="file:/F:/课程/暑假学期/Enterprise/Day5/Week5TutorialExerciseSolution/Lab5sol/build/web/">
       <property name="appLocation" value="file:/F:/课程/暑假学期/Enterprise/Day5/Week5TutorialExerciseSolution/Lab5sol/build/web/"></property>
       <property name="archiveType" value="war"></property>
       <property name="defaultAppName" value="web"></property>
@@ -729,7 +729,7 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application context-root="/Lab5makeupPart1" object-type="user" directory-deployed="true" name="Tutorial5" location="file:/C:/Users/hhh/Documents/NetBeansProjects/Tutorial5/build/web/">
+    <application context-root="/Lab5makeupPart1" object-type="user" name="Tutorial5" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/Tutorial5/build/web/">
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/Tutorial5/build/web/"></property>
       <property name="archiveType" value="war"></property>
       <property name="defaultAppName" value="web"></property>
@@ -739,7 +739,7 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application context-root="/Lab6" object-type="user" directory-deployed="true" name="Lab6" location="file:/C:/Users/hhh/Documents/NetBeansProjects/Lab6/build/web/">
+    <application context-root="/Lab6" object-type="user" name="Lab6" directory-deployed="true" location="file:/C:/Users/hhh/Documents/NetBeansProjects/Lab6/build/web/">
       <property name="archiveType" value="war"></property>
       <property name="appLocation" value="file:/C:/Users/hhh/Documents/NetBeansProjects/Lab6/build/web/"></property>
       <property name="defaultAppName" value="web"></property>
@@ -750,7 +750,20 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application object-type="user" directory-deployed="true" name="Assignment" location="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/">
+    <application object-type="user" name="LibraryCatalogueSystem-app" libraries="C:\Users\zx\Gitprojects\LibraryCatalogueSystem\LibraryCatalogueSystem-common\dist\LibraryCatalogueSystem-common.jar" location="${com.sun.aas.instanceRootURI}/applications/LibraryCatalogueSystem-app/">
+      <property name="archiveType" value="car"></property>
+      <property name="generatedArtifact.LibraryCatalogueSystem-appClient/LibraryCatalogueSystem-app.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/LibraryCatalogueSystem-app/LibraryCatalogueSystem-app.jar"></property>
+      <property name="downloadableArtifact.LibraryCatalogueSystem-appClient/LibraryCatalogueSystem-app.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/LibraryCatalogueSystem-app/LibraryCatalogueSystem-app.jar"></property>
+      <property name="downloadableArtifact.LibraryCatalogueSystem-appClient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/LibraryCatalogueSystem-app/LibraryCatalogueSystem-appClient.jar"></property>
+      <property name="jws.user.friendly.path" value="/LibraryCatalogueSystem-app"></property>
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/LibraryCatalogueSystem-app/LibraryCatalogueSystem-app.jar"></property>
+      <property name="generatedArtifact.LibraryCatalogueSystem-appClient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/LibraryCatalogueSystem-app/LibraryCatalogueSystem-appClient.jar"></property>
+      <property name="defaultAppName" value="LibraryCatalogueSystem-app"></property>
+      <module name="LibraryCatalogueSystem-app">
+        <engine sniffer="appclient"></engine>
+      </module>
+    </application>
+    <application object-type="user" name="Assignment" directory-deployed="true" location="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/">
       <property name="generatedArtifact.AssignmentClient/lib/eclipselink.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/eclipselink.jar"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/javaee-api-7.0.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/javaee-api-7.0.jar"></property>
       <property name="generatedArtifact.AssignmentClient/lib/javax.annotation.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/javax.annotation.jar"></property>
@@ -760,7 +773,7 @@
       <property name="generatedArtifact.AssignmentClient/lib/derbyclient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/derbyclient.jar"></property>
       <property name="downloadableArtifact.AssignmentClient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/Assignment/AssignmentClient.jar"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/derbyclient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/derbyclient.jar"></property>
-      <property name="org.glassfish.ejb.container.application_unique_id" value="98417083873689600"></property>
+      <property name="org.glassfish.ejb.container.application_unique_id" value="98418579423690752"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/derby.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/derby.jar"></property>
       <property name="generatedArtifact.AssignmentClient/lib/javaee-api-7.0.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/javaee-api-7.0.jar"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/javax.persistence_2.1.0.v201304241213.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/javax.persistence_2.1.0.v201304241213.jar"></property>
@@ -795,19 +808,6 @@
         <engine sniffer="jpa"></engine>
       </module>
       <engine sniffer="ear"></engine>
-    </application>
-    <application object-type="user" name="LibraryCatalogueSystem-app" libraries="C:\Users\zx\Gitprojects\LibraryCatalogueSystem\LibraryCatalogueSystem-common\dist\LibraryCatalogueSystem-common.jar" location="${com.sun.aas.instanceRootURI}/applications/LibraryCatalogueSystem-app/">
-      <property name="archiveType" value="car"></property>
-      <property name="generatedArtifact.LibraryCatalogueSystem-appClient/LibraryCatalogueSystem-app.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/LibraryCatalogueSystem-app/LibraryCatalogueSystem-app.jar"></property>
-      <property name="downloadableArtifact.LibraryCatalogueSystem-appClient/LibraryCatalogueSystem-app.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/LibraryCatalogueSystem-app/LibraryCatalogueSystem-app.jar"></property>
-      <property name="downloadableArtifact.LibraryCatalogueSystem-appClient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/LibraryCatalogueSystem-app/LibraryCatalogueSystem-appClient.jar"></property>
-      <property name="jws.user.friendly.path" value="/LibraryCatalogueSystem-app"></property>
-      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/LibraryCatalogueSystem-app/LibraryCatalogueSystem-app.jar"></property>
-      <property name="generatedArtifact.LibraryCatalogueSystem-appClient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/LibraryCatalogueSystem-app/LibraryCatalogueSystem-appClient.jar"></property>
-      <property name="defaultAppName" value="LibraryCatalogueSystem-app"></property>
-      <module name="LibraryCatalogueSystem-app">
-        <engine sniffer="appclient"></engine>
-      </module>
     </application>
   </applications>
 </domain>

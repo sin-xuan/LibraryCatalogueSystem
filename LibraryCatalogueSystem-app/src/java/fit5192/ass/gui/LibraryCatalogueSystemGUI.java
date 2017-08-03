@@ -141,8 +141,10 @@ public interface LibraryCatalogueSystemGUI {
      */
   //  int getBookBid();
     
-    
-    
+    String getBookTitle();
+    String getBookAuthors();
+    String getBookCallnumber();
+    String getBookType();
     /**
      * Return the contact person to search the repository for
      *

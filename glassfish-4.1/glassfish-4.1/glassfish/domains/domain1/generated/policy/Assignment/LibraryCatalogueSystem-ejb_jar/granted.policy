@@ -1,11 +1,14 @@
-/* AUTOMATICALLY GENERATED ON Thu Aug 03 09:58:54 CST 2017*/
+/* AUTOMATICALLY GENERATED ON Thu Aug 03 16:18:20 CST 2017*/
 /* DO NOT EDIT */
 
 grant {
   permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "getAllBooks,Remote,";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByAuthors,Remote,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByTitle,Remote,java.lang.String";
   permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "addBook,Remote,fit5192.ass.repository.entities.Book";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByType,Remote,java.lang.String";
   permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByBid,Remote,int";
-  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByAttributes,Remote,java.lang.String,java.lang.String,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByCallnumber,Remote,java.lang.String";
 };
 
 grant      principal * * {

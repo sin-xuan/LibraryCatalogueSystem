@@ -18,14 +18,20 @@ import javax.persistence.NamedQuery;
  * @author zx
  */
   @Entity
-/* @NamedQueries({@NamedQuery(name=Book.FIND_BY_ATTRIBUTES,query="SELECT b FROM Book b WHERE b.title=:title AND b.authors=:authors AND b.callnumber=: callnumber AND b.type=:type")
-, @NamedQuery(name = Book.FIND_ALL,query="SELECT b FROM Book b")})*/
-@NamedQueries({@NamedQuery(name = Book.FIND_ALL,query="SELECT b FROM Book b")})
+  @NamedQueries({
+      @NamedQuery(name=Book.FIND_BY_TITLE,query="SELECT b FROM Book b WHERE b.title=:title")
+    , @NamedQuery(name = Book.FIND_ALL,query="SELECT b FROM Book b")
+    , @NamedQuery(name = Book.FIND_BY_AUTHORS,query= "SELECT b FROM Book b WHERE b.authors=:authors")
+    , @NamedQuery(name = Book.FIND_BY_CALLNUMBER,query= "SELECT b FROM Book b WHERE b.callnumber=:callnumber")
+    , @NamedQuery(name = Book.FIND_BY_TYPE,query= "SELECT b FROM Book b WHERE b.type=:type")})
+
 public class Book implements Serializable{
     
-   // public static final String FIND_BY_ATTRIBUTES="Property.search";
+   public static final String FIND_BY_TITLE="Book.findByTitle";
    public static final String FIND_ALL="Book.getAll";
-    
+   public static final String FIND_BY_AUTHORS="Book.findByAuthors";
+   public static final String FIND_BY_CALLNUMBER="Book.findByCallNumber";
+   public static final String FIND_BY_TYPE="Book.findByType";
     private int bid;
     private String isbn;
     private String callnumber;

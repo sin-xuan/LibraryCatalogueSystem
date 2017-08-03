@@ -45,5 +45,8 @@ public interface BookRepository {
      * @param typr - the type of the book to search for
      * @return the book found
      */
-    public  List<Book> searchBookByAttributes(String title, String authors,String callnumber, String type) throws Exception;
+    public  List<Book> searchBookByTitle(String title) throws Exception;
+    public  List<Book> searchBookByAuthors(String authors) throws Exception;
+    public  List<Book> searchBookByCallnumber(String callnumber) throws Exception;
+    public  List<Book> searchBookByType(String type) throws Exception;
 }

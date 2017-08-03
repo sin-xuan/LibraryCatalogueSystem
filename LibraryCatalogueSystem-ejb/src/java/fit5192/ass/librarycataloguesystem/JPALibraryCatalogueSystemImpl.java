@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -66,6 +67,15 @@ public class JPALibraryCatalogueSystemImpl implements BookRepository {
     }
     */
     @Override
+    public List<Book> searchBookByTitle(String title) throws Exception{
+    
+        Query query = entityManager.createNamedQuery("Book.findByTitle");
+        query.setParameter("title", title);
+        return query.getResultList();
+
+    }
+    /*
+    @Override
     public List<Book> searchBookByAttributes(String title, String authors,String callnumber, String type) throws Exception{
     
         List<Book> booksearch=new ArrayList<>(this.booksearch.size());
@@ -75,11 +85,28 @@ public class JPALibraryCatalogueSystemImpl implements BookRepository {
                 
             }
         }
-        
         return booksearch;
-    
-    
-    
+    }*/
+
+    @Override
+    public List<Book> searchBookByAuthors(String authors) throws Exception {
+        Query query = entityManager.createNamedQuery("Book.findByAuthors");
+        query.setParameter("authors", authors);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Book> searchBookByCallnumber(String callnumber) throws Exception {
+        Query query = entityManager.createNamedQuery("Book.findByCallNumber");
+        query.setParameter("callnumber", callnumber);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Book> searchBookByType(String type) throws Exception {
+        Query query = entityManager.createNamedQuery("Book.findByType");
+        query.setParameter("type", type);
+        return query.getResultList();
     }
     
 }

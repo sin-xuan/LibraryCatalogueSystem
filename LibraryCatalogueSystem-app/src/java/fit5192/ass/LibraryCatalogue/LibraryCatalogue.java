@@ -43,8 +43,8 @@ public class LibraryCatalogue implements ActionListener, ListSelectionListener{
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == gui.getSearchButton()) {
-            
-        } else {
+            this.displaySearchBooks();
+        } else if(event.getSource() == gui.getCloseButton()){
             System.exit(0);
         }
     }
@@ -67,6 +67,54 @@ public class LibraryCatalogue implements ActionListener, ListSelectionListener{
         }
     }
     
+    public void displaySearchBooks() {
+        
+        try {
+            if(gui.getBookTitle()!=null){
+            String title = gui.getBookTitle();
+            this.gui.displayBookDetails(bookRepository.searchBookByTitle(title));
+            }
+            else if (gui.getBookAuthors()!=null){
+            String authors = gui.getBookAuthors();
+            this.gui.displayBookDetails(bookRepository.searchBookByAuthors(authors));
+            }
+            else if(gui.getBookCallnumber()!=null){
+            String callnumber = gui.getBookCallnumber();
+            this.gui.displayBookDetails(bookRepository.searchBookByCallnumber(callnumber));
+            }
+            else if(gui.getBookType()!=null){
+            String type = gui.getBookType();
+            this.gui.displayBookDetails(bookRepository.searchBookByType(type));
+            }
+            
+        } catch (Exception ex) {
+            this.gui.displayMessageInDialog("Failed to search book: " + ex.getMessage());
+            this.gui.clearBookTable();
+        } finally {
+            this.gui.clearInput();
+        }
+    }
+    /*
+    public void searchBookByAttribute(String title, String authors, String callnumber, String type) {
+        
+        try {
+            List<Book> booksearch = bookRepository.searchBookByAttributes(title, authors, callnumber, type);
+            
+            
+            if (booksearch != null) {
+                this.gui.displayBookDetails(booksearch);
+            } else {
+                this.gui.displayMessageInDialog("No matched books found");
+                this.gui.clearBookTable();
+            }  
+        } catch (Exception ex) {
+            this.gui.displayMessageInDialog("Failed to search property by ID: " + ex.getMessage());
+            this.gui.clearBookTable();
+        } finally {
+            this.gui.clearInput();
+        }
+    }*/
+    /*
     public void searchBookByAttribute(String title, String authors, String callnumber, String type) {
         
         try {
@@ -86,7 +134,7 @@ public class LibraryCatalogue implements ActionListener, ListSelectionListener{
             this.gui.clearInput();
         }
     }
-    
+    */
     /**
      * @param args the command line arguments
      */
