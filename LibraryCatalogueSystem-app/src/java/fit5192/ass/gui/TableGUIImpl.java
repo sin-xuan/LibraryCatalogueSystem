@@ -21,7 +21,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneLayout;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -43,7 +45,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
     
     private final JPanel inputPanel;
     private final JPanel buttonPanel;
-    private final JPanel detailsPanel;
+    private final JPanel detailsPane;
 
     //private final JLabel bidLabel;
     //private final JLabel isbnLabel;
@@ -61,7 +63,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
     private final JTextField titleTextField;
     private final JTextField authorsTextField;
     private final JTextField callnumberTextField;
-    private final JTextField detailsTextField;
+    private final JTextArea detailsTextArea;
     //private final JTextField typeTextField;
     //private final JTextField publisherTextField;
     //private final JTextField thumbnailTextField;
@@ -95,7 +97,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         this.titleTextField = new JTextField();
         this.authorsTextField = new JTextField();
         this.callnumberTextField = new JTextField();
-        this.detailsTextField = new JTextField(10);
+        this.detailsTextArea = new JTextArea(20,8);
        // this.typeTextField = new JTextField();
         
         // create table
@@ -115,13 +117,13 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         // create panels
         this.inputPanel = new JPanel();
         this.buttonPanel = new JPanel();
-        this.detailsPanel = new JPanel();
+        this.detailsPane = new JPanel();
         
         // set layout manager
         container.setLayout(new BorderLayout());
         this.inputPanel.setLayout(new GridLayout(4,2));
         this.buttonPanel.setLayout(new GridLayout(1,2));
-        this.detailsPanel.setLayout(new GridLayout(5,1));
+        this.detailsPane.setLayout(new GridLayout());
         
         // add action listeners
         this.closeButton.addActionListener(actionListener);
@@ -143,7 +145,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         this.buttonPanel.add(this.closeButton);
         
         //detailstextField to detailsPanel
-        this.detailsPanel.add(detailsTextField);
+        this.detailsPane.add(detailsTextArea);
         
         
         
@@ -151,7 +153,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         // add panels to content pane
         container.add(this.inputPanel);
         container.add(new JScrollPane(this.bookTable));
-        container.add(this.detailsPanel);
+        container.add(new JScrollPane(this.detailsTextArea));
         container.add(this.buttonPanel);
         
         
@@ -203,6 +205,20 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         JOptionPane.showMessageDialog(this, message);
     }
 
+ 
+    //search selected book info.
+    @Override
+    public void displaySelectedBookDetails(List<Book> book) {
+        this.detailsTextArea.setText(book.toString());
+    }
+    @Override
+    public String getSelectedBookCallNumber() throws Exception {
+        int selectedRowIndex = this.bookTable.getSelectedRow();
+        String cnumber=this.bookTable.getValueAt(selectedRowIndex, 2).toString();
+        return cnumber;
+    }
+    //selected end
+    
     @Override
     public void displayBookDetails(Book book) {
         this.clearBookTable();
@@ -214,15 +230,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
                                                                                });
     }
 
-    @Override
-    public void displaySelectedBookDetails(Book book) {
-        this.titleTextField.setText(String.valueOf(book.getTitle()));           
-        this.authorsTextField.setText(String.valueOf(book.getAuthors())); 
-        this.callnumberTextField.setText(String.valueOf(book.getCallnumber()));
-        this.typeComboBox.getSelectedItem(); 
-        //this.typeTextField.setText(String.valueOf(book.getType())); 
-    }
-
+    
     @Override
     public void displayBookDetails(List<Book> books) {
         this.clearBookTable();
@@ -316,5 +324,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         });
     } 
 */
+
+    
 
 }

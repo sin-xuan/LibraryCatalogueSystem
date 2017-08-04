@@ -50,8 +50,24 @@ public class LibraryCatalogue implements ActionListener, ListSelectionListener{
     }
 
     @Override
-    public void valueChanged(ListSelectionEvent e) {
-        
+    public void valueChanged(ListSelectionEvent event) {
+        if ((event.getSource() == this.gui.getBookTable().getSelectionModel())
+            && (! event.getValueIsAdjusting()))
+        {
+            try
+            {
+                if (this.gui.isBookSelected()) {
+                    String searchcn= this.gui.getSelectedBookCallNumber();
+                
+                 List<Book> book = this.bookRepository.searchBookByCallnumber(searchcn);
+                    this.gui.displaySelectedBookDetails(book);
+                }               
+            }
+            catch (Exception e)
+            {
+                gui.displayMessageInDialog(e.getMessage());
+            }
+        }
     }
     
     private void displayAllBooks() {

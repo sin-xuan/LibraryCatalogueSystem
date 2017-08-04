@@ -178,7 +178,7 @@ public class Book implements Serializable{
     public String getPreviewurl(){
         return previewurl;
     }
-    public void setPreviewurl(String prevewurl){
+    public void setPreviewurl(String previewurl){
         this.previewurl = previewurl;
     }
     
@@ -187,7 +187,29 @@ public class Book implements Serializable{
      */
     @Override
     public String toString() {
-        return bid + " " +isbn + " " + callnumber + " " + title + " "+ authors + " " + publisher + " "+ type + " " + thumbnail + " "+ description + " "+ previewurl;
+       StringBuilder bookstring = new StringBuilder();
+       bookstring.append("Book ID:").append(bid);
+       bookstring.append("\n");
+       bookstring.append("ISBN:").append(isbn);
+       bookstring.append("\n");
+       bookstring.append("Call Number:").append(callnumber);
+       bookstring.append("\n");
+       bookstring.append("Title:").append(title);
+       bookstring.append("\n");
+       bookstring.append("Author(s):").append(authors);
+       bookstring.append("\n");
+       bookstring.append("Publisher:").append(publisher);
+       bookstring.append("\n");
+       bookstring.append("Type:           ").append(type);
+       bookstring.append("\n");
+       bookstring.append("Thumbnail:      ").append(thumbnail);
+       bookstring.append("\n");
+       bookstring.append("Description:    ").append(description);
+       bookstring.append("\n");
+       bookstring.append("Preview URL:    ").append(previewurl);
+        
+       return bookstring.toString();       
+        
     }
     
     

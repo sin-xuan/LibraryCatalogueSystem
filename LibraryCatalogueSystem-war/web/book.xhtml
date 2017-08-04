@@ -1,12 +1,97 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Search Result</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <header>
+            <h1>BOOK SEARCH RESULT</h1>
+            </header>
+        <!--judge if books is empty-->
+      
+        
+
+        <h:dataTable value="#{libraryManagedBean.books}" var="bookr" border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Title"></h:outputText>
+                </f:facet>
+                <h:outputText value="#{bookr.title}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Authors"></h:outputText>
+                </f:facet>
+                    <h:outputText value="#{bookr.authors}"></h:outputText>             
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="CallNumber"></h:outputText>
+                </f:facet>
+                    <h:outputText value="#{bookr.callnumber}"></h:outputText>             
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="More"></h:outputText>
+                </f:facet>
+                 <h:form>
+                     <h:commandLink action="#{libraryManagedBean.detailsBook()}" value="detail">
+                        <f:param name="book_id" value="#{bookr.bid}"></f:param> 
+                   </h:commandLink>
+               </h:form>
+            </h:column>
+        </h:dataTable>
+
+       
+        
+       
+        
+
+            <ul>
+                <ui >
+                    <li>
+                        <img src="#{libraryManagedBean.bookr.thumbnail}" alt="Thmbnail"/>
+                         <!--h:outputText value="#{libraryManagedBean.bookr.thumbnail}"/--> 
+                    </li>
+                    <li>
+                         <h:outputLabel value="Title:" />
+                         <h:outputText value="#{libraryManagedBean.bookr.title}"/> 
+                    </li>
+                    <li>
+                         <h:outputLabel value="Author:" />
+                         <h:outputText value="#{libraryManagedBean.bookr.authors}"/> 
+                    </li>
+                    <li>
+                         <h:outputLabel value="ISBN:" />
+                         <h:outputText value="#{libraryManagedBean.bookr.isbn}"/> 
+                    </li>
+                    <li>
+                         <h:outputLabel value="Call Number:" />
+                         <h:outputText value="#{libraryManagedBean.bookr.callnumber}"/> 
+                    </li>
+                    <li>
+                         <h:outputLabel value="Publisher:" />
+                         <h:outputText value="#{libraryManagedBean.bookr.publisher}"/> 
+                    </li>
+                    <li>
+                         <h:outputLabel value="Type:" />
+                         <h:outputText value="#{libraryManagedBean.bookr.type}"/> 
+                    </li>
+                    <li>
+                         <h:outputLabel value="Description:" />
+                         <h:outputText value="#{libraryManagedBean.bookr.authors}"/> 
+                    </li>
+                    <li>
+                         <h:outputLabel value="Preview URL:" />
+                         <a href="#{libraryManagedBean.bookr.previewurl}">Turn To Wiki</a> 
+                    </li>
+                </ui>
+            </ul>
     </h:body>
 </html>
 

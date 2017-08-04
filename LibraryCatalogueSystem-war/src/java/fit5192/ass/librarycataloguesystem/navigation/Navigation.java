@@ -10,5 +10,6 @@ package fit5192.ass.librarycataloguesystem.navigation;
  * @author zx
  */
 public enum Navigation {
-    index;
+    index,
+    book;
 }

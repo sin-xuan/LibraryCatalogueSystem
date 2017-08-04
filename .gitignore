@@ -22,3 +22,8 @@
 /Assignment/build/
 /id*/*
 /glassfish-4.1/*
+/LibraryCatalogueSystem-war/build/
+/AssignmentForWar/nbproject/private/
+/LibraryCatalogueSystem-war/dist/
+/AssignmentForWar/build/
+/AssignmentForWar/dist/

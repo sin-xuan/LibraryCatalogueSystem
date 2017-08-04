@@ -43,13 +43,9 @@ public class JPALibraryCatalogueSystemImpl implements BookRepository {
 
     @Override
     public Book searchBookByBid(int bid) throws Exception {
-        for (Book book : this.books) {
-            if (book.getBid() == bid) {
-                return book;
-            }
-        }
-        
-        return null;
+        Query query = entityManager.createQuery("select b from Book b WHERE b.bid = :bookId", Book.class);
+        query.setParameter("bookId", bid);
+        return (Book) query.getSingleResult();
     }
 
     @Override
@@ -69,7 +65,7 @@ public class JPALibraryCatalogueSystemImpl implements BookRepository {
     @Override
     public List<Book> searchBookByTitle(String title) throws Exception{
     
-        Query query = entityManager.createNamedQuery("Book.findByTitle");
+        Query query = entityManager.createNamedQuery(Book.FIND_BY_TITLE);
         query.setParameter("title", title);
         return query.getResultList();
 
@@ -90,7 +86,7 @@ public class JPALibraryCatalogueSystemImpl implements BookRepository {
 
     @Override
     public List<Book> searchBookByAuthors(String authors) throws Exception {
-        Query query = entityManager.createNamedQuery("Book.findByAuthors");
+        Query query = entityManager.createNamedQuery(Book.FIND_BY_AUTHORS);
         query.setParameter("authors", authors);
         return query.getResultList();
     }
@@ -102,6 +98,7 @@ public class JPALibraryCatalogueSystemImpl implements BookRepository {
         return query.getResultList();
     }
 
+    
     @Override
     public List<Book> searchBookByType(String type) throws Exception {
         Query query = entityManager.createNamedQuery("Book.findByType");

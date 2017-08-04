@@ -55,7 +55,7 @@ public interface LibraryCatalogueSystemGUI {
      *
      * @param property - the details of the selected property to display
      */
-    void displaySelectedBookDetails(Book book);
+    void displaySelectedBookDetails(List<Book> book);
     
     /**
      * Display the details of the properties
@@ -77,7 +77,7 @@ public interface LibraryCatalogueSystemGUI {
      * @return the ID of the selected property
      */
    // int getSelectedBookBid() throws Exception;
-    
+    String getSelectedBookCallNumber() throws Exception;
     /**
      * Return the Add Property button
      *
