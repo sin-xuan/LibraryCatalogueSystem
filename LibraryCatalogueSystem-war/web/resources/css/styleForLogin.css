@@ -1,0 +1,13 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 6, 2017, 3:30:04 PM
+    Author     : zx
+*/
+form{background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+border-radius: 10%; height:10cm; width: 15cm ; padding: 20px;margin: 20px}
+.userinfo{height: 1cm; width:8cm; border-radius: 3px; border: 1px solid #fff;letter-spacing: 3px}
+.loginin{width:3cm; height:40px; border-radius: 5px; letter-spacing: 2px; font-size: 15px;cursor: pointer;margin: 1cm}

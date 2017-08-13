@@ -9,9 +9,13 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  *
@@ -33,6 +37,7 @@ public class Book implements Serializable{
    public static final String FIND_BY_CALLNUMBER="Book.findByCallNumber";
    public static final String FIND_BY_TYPE="Book.findByType";
     private int bid;
+   
     private String isbn;
     private String callnumber;
     private String title;
@@ -101,7 +106,8 @@ public class Book implements Serializable{
    
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="Book_Seq")
+    @SequenceGenerator(name="Book_Seq",sequenceName="Book_Seq",allocationSize=1)
     @Column(name="bid")
     public int getBid(){
         return bid;
@@ -110,7 +116,7 @@ public class Book implements Serializable{
        this.bid = bid;
     }
     
-    @Column(name="isbn")
+    @Column(name="isbn",nullable=true )    
     public String getIsbn(){
        return isbn;
     }

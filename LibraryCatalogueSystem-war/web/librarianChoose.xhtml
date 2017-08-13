@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+         <h:outputStylesheet name="css/styleForLibraryChoose.css" />
+    </h:head>
+    <h:body>
+        
+        <div class="blocktop" >
+            <header>  <h1> Library Catalogue System</h1>  </header>
+        </div>
+        <div class="blockdown">
+            <div class="blockleft">
+             <h:form>
+                 <h:commandLink id="choose1" class="choosebutton1" value="Operation For Book" action="index"/> </h:form>
+        </div>
+            
+            <div class="blockcenter">
+             <h:form>
+            
+        <h:commandLink id="choose3" class="choosebutton2" value="Operation For Loan" action="loanoperations"/>
+        </h:form>
+        </div>
+            
+        <div class="blockright">
+             <h:form>
+            
+        <h:commandLink id="choose2" class="choosebutton2" value="Operation For User" action="useroperations"/>
+        </h:form>
+        </div>
+        </div>
+        
+       
+        
+    </h:body>
+</html>
+

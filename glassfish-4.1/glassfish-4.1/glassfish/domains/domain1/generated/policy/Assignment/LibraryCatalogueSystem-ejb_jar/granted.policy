@@ -1,17 +1,42 @@
-/* AUTOMATICALLY GENERATED ON Fri Aug 04 23:59:23 CST 2017*/
+/* AUTOMATICALLY GENERATED ON Thu Aug 10 16:57:11 CST 2017*/
 /* DO NOT EDIT */
 
 grant {
-  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "getAllBooks,Remote,";
-  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByAuthors,Remote,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPAUserManagement", "getAllMembers,Remote,";
+  permission javax.security.jacc.EJBMethodPermission "JPAUserManagement", "searchUserByEmail,Remote,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPAMemberIpml", "updateMember,Remote,fit5192.ass.repository.entities.Member";
+  permission javax.security.jacc.EJBMethodPermission "JPALoanImpl", "addLoan,Remote,fit5192.ass.repository.entities.Loan";
+  permission javax.security.jacc.EJBMethodPermission "JPALoanImpl", "searchLoanByLid,Remote,int";
   permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByTitle,Remote,java.lang.String";
-  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "addBook,Remote,fit5192.ass.repository.entities.Book";
-  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByType,Remote,java.lang.String";
   permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByBid,Remote,int";
+  permission javax.security.jacc.EJBMethodPermission "JPAUserManagement", "editMember,Remote,fit5192.ass.repository.entities.User";
+  permission javax.security.jacc.EJBMethodPermission "JPALoanImpl", "editLoan,Remote,fit5192.ass.repository.entities.Loan";
+  permission javax.security.jacc.EJBMethodPermission "JPAUserManagement", "searchUserByPassword,Remote,java.lang.String";
   permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByCallnumber,Remote,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPAUserManagement", "addMember,Remote,fit5192.ass.repository.entities.User";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "removeBook,Remote,int";
+  permission javax.security.jacc.EJBMethodPermission "JPALoanImpl", "searchLoanByMemberidANDRelateduserid,Remote,";
+  permission javax.security.jacc.EJBMethodPermission "JPALoanImpl", "getAllLoans,Remote,";
+  permission javax.security.jacc.EJBMethodPermission "JPALoanImpl", "searchLoansByAttributes,Remote,int,int,java.lang.String,int,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchUserByEmailANDPassword,Remote,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPAUserManagement", "searchMemberByUid,Remote,int";
+  permission javax.security.jacc.EJBMethodPermission "JPALoanImpl", "searchLoanByMemberid,Remote,int";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByType,Remote,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPAUserManagement", "searchUserByEmailANDPassword,Remote,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "getAllBooks,Remote,";
+  permission javax.security.jacc.EJBMethodPermission "JPAUserManagement", "searchUserByAttribute,Remote,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "searchBookByAuthors,Remote,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "JPALoanImpl", "removeLoan,Remote,int";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "editBook,Remote,fit5192.ass.repository.entities.Book";
+  permission javax.security.jacc.EJBMethodPermission "JPALibraryCatalogueSystemImpl", "addBook,Remote,fit5192.ass.repository.entities.Book";
+  permission javax.security.jacc.EJBMethodPermission "JPAMemberIpml", "addNewMember,Remote,fit5192.ass.repository.entities.Member";
+  permission javax.security.jacc.EJBMethodPermission "JPAUserManagement", "removeMember,Remote,int";
 };
 
 grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "JPAMemberIpml", "**";
   permission javax.security.jacc.EJBRoleRefPermission "JPALibraryCatalogueSystemImpl", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "JPAUserManagement", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "JPALoanImpl", "**";
 };
 

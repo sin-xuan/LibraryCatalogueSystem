@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Loan Operations</title>
+        <h:outputStylesheet name="css/styleForLoan.css" />
+    </h:head>
+    <h:body>
+       <article>
+           
+            <h2>Loan Operations</h2>
+            <h:form>
+            <ul class="navigation">
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/librarianChoose.xhtml">OPERATION CHOOSE</a></li>
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/editBook.xhtml"> ADD BOOK </a> </li>
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/editUser.xhtml"> ADD USER </a> </li>
+                <li class="navigationli"> <h:commandLink class="navigationa" action="#{loginManagedBean.logOut()}">LOG OUT</h:commandLink></li>
+            </ul>
+            </h:form>
+            <p>Please input some attributes of the book you searching for: </p>
+            <hr class="spaceline"/>
+            <!--form-->
+           
+            <center>
+            <h:form class="indexform">
+                <!--Loan ID input-->
+                <p class="titlespace" >Loan ID: </p>
+                <h:inputText id="loanid" class="attributes" label="loanid" size ="32" value="#{loanManagedBean.lid}" />
+
+                <!--member ID input-->
+                <p class="titlespace">Member ID: </p>
+                <h:inputText id="memberid" class="attributes" label="authors" size ="32" value="#{loanManagedBean.uid}">   
+                </h:inputText>
+                <!--email input-->
+                <p class="titlespace">Member email: </p>
+                <h:inputText id="memberemail" class="attributes" label="memberemail" size ="32" value="#{loanManagedBean.email}"></h:inputText>
+                <!--book ID input-->
+                <p class="titlespace">Book ID: </p>
+                <h:inputText id="bookid" class="attributes" label="bookid" size ="32" value="#{loanManagedBean.bid}"></h:inputText>
+                <!--book title input-->
+                <p class="titlespace">Book Title: </p>
+                <h:inputText id="booktitle" class="attributes" label="bookid" size ="32" value="#{loanManagedBean.title}"></h:inputText>
+                <br/><br/>
+                <!--search loan button-->
+                <h:commandButton id="submit" class="submitbutton" value="Search" action="#{loanManagedBean.searchLoans()}"/>
+                
+                </h:form>  
+                <!--end form-->
+            </center>
+            
+            <h:outputText value="#{loanManagedBean.searchloanMessage}" style="color: red"></h:outputText>
+        </article>
+        <!--end article-->
+    </h:body>
+</html>
+

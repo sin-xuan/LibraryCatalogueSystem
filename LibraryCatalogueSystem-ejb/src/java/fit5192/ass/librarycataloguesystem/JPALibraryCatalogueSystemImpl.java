@@ -6,13 +6,15 @@
 package fit5192.ass.librarycataloguesystem;
 
 import fit5192.ass.repository.entities.Book;
+import fit5192.ass.repository.entities.User;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.EJB;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 
 /**
  *
@@ -24,7 +26,7 @@ public class JPALibraryCatalogueSystemImpl implements BookRepository {
     
     @PersistenceContext
     private EntityManager entityManager;
-    
+    private Book fixbook;
     private final List<Book> books;
     private final List<Book> booksearch;
     
@@ -104,6 +106,31 @@ public class JPALibraryCatalogueSystemImpl implements BookRepository {
         Query query = entityManager.createNamedQuery("Book.findByType");
         query.setParameter("type", type);
         return query.getResultList();
+    }
+
+    @Override
+    public User searchUserByEmailANDPassword(String email, String password) throws Exception {
+        Query query = entityManager.createQuery("SELECT u from User u WHERE u.email = :email AND u.password = :password", User.class);
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+        List<User> users = query.getResultList();
+        if(users.size()>0){
+            return users.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public void removeBook(int bid) throws Exception {
+        Book book= this.searchBookByBid(bid);
+        if(book!=null){
+          entityManager.remove(book);
+        }
+    }
+
+    @Override
+    public void editBook(Book book) throws Exception {
+       entityManager.merge(book);
     }
     
 }

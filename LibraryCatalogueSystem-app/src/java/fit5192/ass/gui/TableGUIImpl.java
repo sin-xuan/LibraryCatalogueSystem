@@ -33,7 +33,7 @@ import javax.swing.table.TableColumnModel;
  * @author zx
  */
 public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
-    private static final String[] TABLE_COLUMNS = {"Title","Authors","Call_Number"};
+    private static final String[] TABLE_COLUMNS = {"Authors","Title","Call_Number"};
     private static final String TAG_SEPARATOR = ",";
     
     private final JButton closeButton;
@@ -112,7 +112,7 @@ public class TableGUIImpl extends JFrame implements LibraryCatalogueSystemGUI{
         
         //create combobox
         
-        this.typeComboBox = new JComboBox(new String[]{" ","General", "Reserve","a","bb"});
+        this.typeComboBox = new JComboBox(new String[]{" ","General", "Reserved"});
         
         // create panels
         this.inputPanel = new JPanel();

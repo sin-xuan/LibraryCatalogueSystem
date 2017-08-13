@@ -6,6 +6,7 @@
 package fit5192.ass.librarycataloguesystem;
 
 import fit5192.ass.repository.entities.Book;
+import fit5192.ass.repository.entities.User;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -49,4 +50,7 @@ public interface BookRepository {
     public  List<Book> searchBookByAuthors(String authors) throws Exception;
     public  List<Book> searchBookByCallnumber(String callnumber) throws Exception;
     public  List<Book> searchBookByType(String type) throws Exception;
+    public  User searchUserByEmailANDPassword(String email,String password) throws Exception;
+    public void removeBook(int bid) throws Exception;
+    public void editBook(Book book) throws Exception;
 }

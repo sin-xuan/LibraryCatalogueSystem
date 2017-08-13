@@ -8,21 +8,19 @@ and open the template in the editor.
     Author     : zx
 */
 /* Main Sections*/
-html {  background:  #9CF}
-body { background:#ADD8E6;  height: 500px; margin:0; font-family: Arial; padding-bottom: 5px;} 
-header { background: #9CF; height: 40px; padding: 20px; } 
+
+body { background-image: linear-gradient(-225deg, #7DE2FC 0%, #B9B6E5 100%); font-family: Arial; } 
+header { background-image: linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%); height: 40px; padding: 20px; } 
 article { padding: 20px; } 
 /* Headings */ 
 header h1 { color: #FFF; margin: 0; } 
 h2 { margin: 0; } 
 /* Form Elements */ 
 form p { font-weight: bold; margin: 0; } 
- 
-textarea { display: block; margin-bottom: 10px; height: 240px; width: 480px;}
-.spaceline{}
-.searchblock{}
-.indexform{margin: 0 auto;}
-.attributes{border-radius: 3px; border: 1px solid #74ddf7}
-#submit{width:10px; height:30px; border-radius: 5px; letter-spacing: 2px; font-size: 8px;cursor: point}
+form{margin-top: 1.5cm;} 
 
+.spaceline{height: 2px; border: none; border-top: 2px dotted #FFF}
+.attributes{height: 1cm; width:8cm; border-radius: 3px; border: 1px solid #fff;letter-spacing: 3px}
+.submitbutton{width:4cm; height:40px; border-radius: 5px; letter-spacing: 2px; font-size: 15px;cursor: pointer;margin: 1cm}
+.titlespace{margin: 10px}
 

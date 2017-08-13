@@ -7,16 +7,23 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Search Result</title>
+        <h:outputStylesheet name="css/styleForBook.css" />
     </h:head>
     <h:body>
         <header>
             <h1>BOOK SEARCH RESULT</h1>
             </header>
-        <!--judge if books is empty-->
+       <h:form>
+            <ul class="navigation">
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/librarianChoose.xhtml">OPERATION CHOOSE</a></li>
+                <li class="navigationli"> <h:commandLink class="navigationa" action="#{loginManagedBean.logOut()}">LOG OUT</h:commandLink></li>
+            </ul>
+            </h:form>
       
-        
-
-        <h:dataTable value="#{libraryManagedBean.books}" var="bookr" border="1">
+        <div class="high">
+        <h:dataTable value="#{libraryManagedBean.books}" var="bookr" 
+                      styleClass="table" rowClasses="list-row1-bg,list-row2-bg" 
+                      columnClasses="list-coloum1-center,list-coloum2-center,list-coloum3-center,list-coloum4-center,list-coloum5-center,list-coloum6-center,list-coloum7-center">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Title"></h:outputText>
@@ -45,53 +52,102 @@
                    </h:commandLink>
                </h:form>
             </h:column>
+            <c:if test='#{session.getAttribute("user").type == "L"}'>
+                
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="UpdateBook"></h:outputText>
+                </f:facet>
+                 <h:form>
+                     <h:commandButton action="#{libraryManagedBean.updateExistBookUI()}" value="Update">
+                        <f:param name="book_id" value="#{bookr.bid}"></f:param> 
+                   </h:commandButton>  
+               </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Delete Book"></h:outputText>
+                </f:facet>
+                 <h:form>
+                     <h:commandButton action="#{libraryManagedBean.deleteExistBook()}" value="Delete">
+                        <f:param name="book_id" value="#{bookr.bid}"></f:param> 
+                   </h:commandButton>
+               </h:form>
+            </h:column>
+            </c:if>
+            <c:if test='#{session.getAttribute("user").type == "M"}'>
+                 <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Borrow Book"></h:outputText>
+                </f:facet>
+                 <h:form>
+                     <h:commandButton action="#{libraryManagedBean.borrowBook()}" value="Borrow">
+                        <f:param name="book_id" value="#{bookr.bid}"></f:param> 
+                   </h:commandButton>
+               </h:form>
+            </h:column>
+            </c:if>
         </h:dataTable>
+        </div>
 
        
         
        
         
-
-            <ul>
-                <ui >
-                    <li>
-                        <img src="#{libraryManagedBean.bookr.thumbnail}" alt="Thmbnail"/>
-                         <!--h:outputText value="#{libraryManagedBean.bookr.thumbnail}"/--> 
-                    </li>
-                    <li>
+<!--get book details-->
+<c:if  test="#{libraryManagedBean.flag==1}">
+        
+ 
+    <div class="low">
+            <div class="bookdetblock1"> <img src="#{libraryManagedBean.bookr.thumbnail}" alt="Thmbnail" class="bookpic"/> </div> 
+            <div class="bookdetblock2">
+                <ul>
+                    <li class="listspace">
                          <h:outputLabel value="Title:" />
                          <h:outputText value="#{libraryManagedBean.bookr.title}"/> 
                     </li>
-                    <li>
+                    <li class="listspace">
                          <h:outputLabel value="Author:" />
                          <h:outputText value="#{libraryManagedBean.bookr.authors}"/> 
                     </li>
-                    <li>
+                    <li class="listspace">
                          <h:outputLabel value="ISBN:" />
                          <h:outputText value="#{libraryManagedBean.bookr.isbn}"/> 
                     </li>
-                    <li>
+                    <li class="listspace">
                          <h:outputLabel value="Call Number:" />
                          <h:outputText value="#{libraryManagedBean.bookr.callnumber}"/> 
                     </li>
-                    <li>
+                    <li class="listspace">
                          <h:outputLabel value="Publisher:" />
                          <h:outputText value="#{libraryManagedBean.bookr.publisher}"/> 
                     </li>
-                    <li>
+                    <li class="listspace">
                          <h:outputLabel value="Type:" />
                          <h:outputText value="#{libraryManagedBean.bookr.type}"/> 
                     </li>
-                    <li>
+                    <li class="listspace">
                          <h:outputLabel value="Description:" />
                          <h:outputText value="#{libraryManagedBean.bookr.authors}"/> 
                     </li>
-                    <li>
+                    <li class="listspace">
                          <h:outputLabel value="Preview URL:" />
                          <a href="#{libraryManagedBean.bookr.previewurl}">Turn To Wiki</a> 
                     </li>
-                </ui>
+                
             </ul>
+            </div>
+    </div>
+            
+  
+        <!--div low end-->
+        </c:if>
+     
+         <h:form>
+             <h:commandButton id="submit3" class="submitbutton" value="Return to search" action="index"/> 
+        </h:form>
+         <h:outputText value="#{libraryManagedBean.deletemessage}" style="color: red"/>
+         <h:outputText value="#{libraryManagedBean.borrowMessage}" style="color: red"/>
     </h:body>
 </html>
 

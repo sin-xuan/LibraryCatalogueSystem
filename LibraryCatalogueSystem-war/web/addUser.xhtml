@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Add User</title>
+        <h:outputStylesheet name="css/styleForUser.css" />
+    </h:head>
+    <h:body>
+       
+            <header>
+                Add User
+            </header>
+
+        <h:form>
+        <ul class="navigation">
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/librarianChoose.xhtml">OPERATION CHOOSE</a></li>
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/editBook.xhtml"> ADD BOOK </a> </li>
+                
+                <li class="navigationli"> <h:commandLink class="navigationa" action="#{loginManagedBean.logOut()}">LOG OUT</h:commandLink></li>
+            </ul>
+        </h:form>
+        <br/>
+          <hr class="spaceline1"/>
+
+          <center>
+           <h:form class="userform" >
+             
+                   <p class="titlespace">User ID: <h:message for="userid"  styleClass="error"/> </p> 
+                   <h:inputText id="userid" class="attributes" value="#{userOperationManagedBean.uid}"  required="true" requiredMessage="You must inpur a user ID !">
+                   </h:inputText>
+   
+               
+            <p class="titlespace">Last Name:  </p>
+            <h:inputText id="userlname" class="attributes" value="#{userOperationManagedBean.lastname}" validatorMessage="User last name must be pure letters !" >
+                <f:validateRegex for="userlname" pattern="^[A-Za-z]+$"  />
+            </h:inputText>
+            
+            <p class="titlespace">First Name: </p>
+            <h:inputText id="userfname" class="attributes" value="#{userOperationManagedBean.firstname}" validatorMessage="User's first name must be pure letters !" >
+                <f:validateRegex for="userfname" pattern="^[A-Za-z]+$" />
+            </h:inputText>
+            
+            <p class="titlespace">Email: </p>
+            <h:inputText id="useremail" class="attributes" value="#{userOperationManagedBean.email}" validatorMessage="Please input the email within a legal form !" >
+               <f:validateRegex for="useremail" pattern="^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" /> 
+            </h:inputText>
+            
+            <p class="titlespace">Address: <h:message for="useraddress"  styleClass="error"/> </p>
+            <h:inputText id="useraddress" class="attributes" value="#{userOperationManagedBean.address}" required="true" requiredMessage="You must enter an address !"/>
+            
+
+  
+            <p class="titlespace">Password :  <h:message for="userpassword"  styleClass="error"/> </p>
+            <h:inputText id="userpassword" class="attributes" value="#{userOperationManagedBean.password}" required="true" requiredMessage="You must enter a password !">
+               
+            </h:inputText>
+            
+            
+            <p class="titlespace">Type: <h:message for="usertype"  styleClass="error"/> </p>
+            <h:inputText id="usertype" class="attributes" value="#{userOperationManagedBean.type}" maxlength="1" required="true" requiredMessage="You must enter a type !"/>
+   
+            
+            <p class="titlespace">Phone Number: </p>
+            <h:inputText id="userphonenumber" class="attributes" value="#{userOperationManagedBean.phonenumber}" validatorMessage="Phone number should begin with 9 and the length is 8, or begin with 0 and the length is 10 !">
+               <f:validateRegex for="userphonenumber" pattern="^[9][0-9]{7}$|^[0][0-9]{9}$"/>
+            </h:inputText>
+            
+            <br/>
+        
+
+                <h:commandButton class="submitButthon" value="SubmitNewInfo" action="#{userOperationManagedBean.addNewUser()}">
+                    <f:param name="user_uid" value="#{userOperationManagedBean.member.uid}"></f:param>
+                </h:commandButton>
+      
+        </h:form>    
+          </center>
+        
+          <h:outputText value="#{userOperationManagedBean.addMessage}" style="color: red"/>
+ 
+           <h:form>
+             <h:commandButton id="submit3" class="submitbutton" value="Return to user operation" action="useroperations"/> 
+        </h:form>
+    </h:body>
+</html>
+

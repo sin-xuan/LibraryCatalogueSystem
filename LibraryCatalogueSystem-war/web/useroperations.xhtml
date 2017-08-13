@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Operation For User</title>
+        <h:outputStylesheet name="css/styleForUser.css" />
+    </h:head>
+    <h:body>
+        <!--start header -->
+            <header>  <h1>Operation For User</h1>  </header>
+        <!-- end header-->
+        <!--start article-->
+        <article>
+            <h:form>
+            <ul class="navigation">
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/librarianChoose.xhtml">OPERATION CHOOSE</a></li>
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/editBook.xhtml"> ADD BOOK </a> </li>
+                <li class="navigationli"> <h:commandLink class="navigationa" action="#{loginManagedBean.logOut()}">LOG OUT</h:commandLink></li>
+            </ul>
+            </h:form>
+
+            <hr class="spaceline"/>
+            <!--form-->
+           
+            <center>
+            <h:form class="userform">
+                <!--id input-->
+                <p class="titlespace" >User ID </p>
+                <h:inputText  class="attributes" label="uid" size ="32" value="#{userOperationManagedBean.uid}" >
+                    <f:param name="user_uid" value="#{userOperationManagedBean.uid}"></f:param>
+                </h:inputText>
+                <!--lastname input-->
+                <p class="titlespace" >Last Name </p>
+                <h:inputText  id="userlname" class="attributes" label="lastname" size ="32" value="#{userOperationManagedBean.lastname}">
+                    
+                     <f:param name="user_lastname" value="#{userOperationManagedBean.lastname}"></f:param>
+                </h:inputText>
+                   
+           
+                <!--firstname input-->
+                <p class="titlespace" >First Name </p>
+                <h:inputText  class="attributes" label="firstname" size ="32" value="#{userOperationManagedBean.firstname}" >
+                    <f:param name="user_firstname" value="#{userOperationManagedBean.firstname}"></f:param>
+                </h:inputText>
+                <!--email input-->
+                <p class="titlespace" >Email </p>
+                <h:inputText  class="attributes" label="uid" size ="32" value="#{userOperationManagedBean.email}" >
+                    <f:param name="user_email" value="#{userOperationManagedBean.email}"></f:param>
+                </h:inputText>
+                <!--address input-->
+                <p class="titlespace" >Address </p>
+                <h:inputText  class="attributes" label="uid" size ="32" value="#{userOperationManagedBean.address}" >
+                    <f:param name="user_address" value="#{userOperationManagedBean.address}"></f:param>
+                </h:inputText>
+                <!--phonenumber input-->
+                <p class="titlespace" >Phone Number </p>
+                <h:inputText  class="attributes" label="uid" size ="32" value="#{userOperationManagedBean.phonenumber}" >
+                    <f:param name="user_uid" value="#{userOperationManagedBean.phonenumber}"></f:param>
+                </h:inputText>
+                
+                
+                
+                
+                <br/><br/>
+                <h:commandButton id="submit" class="submitbutton" value="Search" action="#{userOperationManagedBean.searchMember()}"/>
+                <h:commandButton id="submit3" class="submitbutton" value="New Member" action="addUser"/> 
+             
+                </h:form>  
+              
+                <!--end form-->
+            </center>
+           
+                <!--form search button-->
+                <!--h:form-->
+         
+        </article>
+        <!--end article-->
+        
+        <h:outputText value="#{userOperationManagedBean.searchMessage}" style="color: red"></h:outputText>
+                
+    </h:body>
+</html>
+

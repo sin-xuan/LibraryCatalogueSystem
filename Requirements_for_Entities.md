@@ -1,5 +1,5 @@
 ## user
-* id  - int - PK
+* uid  - int - PK
 * lastname - String     NO NUMBER  
 * firstname - String    NO NUMBER  
 * email   - String     a valid email format (e.g. eddieleung@gmail.com).  
@@ -34,9 +34,9 @@ Each book is associated with a unique Call number. The format can refer to the e
 
 ## loan  
 * id  - int -   PK  
-* memberid - int -  FK   reference colum:  user:id  not null
+* member_id - User -  FK   reference colum:  user:id  not null
 * startdate - Date   max period is 4 weeks  
 * duedate - Date
-* relatedbookids - string FK  reference colum :  book: bid  may several books, join with(",")
+* related_book_id - Book FK  reference colum :  book: bid  may several books, join with(",")
 >  A member cannot make any new loan if he/she has an overdue loan(s) on their account.   
 A member can only borrow the book(s) that have at least one physical copy available.

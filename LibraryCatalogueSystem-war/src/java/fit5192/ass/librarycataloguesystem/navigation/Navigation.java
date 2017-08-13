@@ -11,5 +11,7 @@ package fit5192.ass.librarycataloguesystem.navigation;
  */
 public enum Navigation {
     index,
-    book;
+    book,
+    librarianChoose,
+    editBook;
 }

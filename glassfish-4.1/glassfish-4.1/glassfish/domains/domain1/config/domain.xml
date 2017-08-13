@@ -762,19 +762,17 @@
         <engine sniffer="appclient"></engine>
       </module>
     </application>
-    <application object-type="user" name="Assignment" directory-deployed="true" location="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/">
+    <application context-root="/LibraryCatalogueSystem-war" object-type="user" name="Assignment" directory-deployed="true" location="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/">
       <property name="generatedArtifact.AssignmentClient/lib/eclipselink.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/eclipselink.jar"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/javaee-api-7.0.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/javaee-api-7.0.jar"></property>
       <property name="generatedArtifact.AssignmentClient/lib/javax.annotation.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/javax.annotation.jar"></property>
       <property name="appLocation" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/webservices-api-osgi.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/webservices-api-osgi.jar"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/eclipselink.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/eclipselink.jar"></property>
-      <property name="keepSessions" value="true"></property>
       <property name="generatedArtifact.AssignmentClient/lib/derbyclient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/derbyclient.jar"></property>
       <property name="downloadableArtifact.AssignmentClient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/glassfish-4.1/glassfish-4.1/glassfish/domains/domain1/generated/xml/Assignment/AssignmentClient.jar"></property>
-      <property name="org.glassfish.ejb.startup.keepstate" value="true"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/derbyclient.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/derbyclient.jar"></property>
-      <property name="org.glassfish.ejb.container.application_unique_id" value="98425991210532864"></property>
+      <property name="org.glassfish.ejb.container.application_unique_id" value="98458364896477184"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/derby.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/derby.jar"></property>
       <property name="generatedArtifact.AssignmentClient/lib/javaee-api-7.0.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/javaee-api-7.0.jar"></property>
       <property name="downloadableArtifact.AssignmentClient/lib/javax.persistence_2.1.0.v201304241213.jar" value="file:/C:/Users/zx/Gitprojects/LibraryCatalogueSystem/Assignment/dist/gfdeploy/Assignment/lib/javax.persistence_2.1.0.v201304241213.jar"></property>
@@ -803,7 +801,6 @@
         <property name="jws.user.friendly.path" value="/Assignment/LibraryCatalogueSystem-app"></property>
       </module>
       <module name="LibraryCatalogueSystem-war.war">
-        <engine sniffer="weld"></engine>
         <engine sniffer="security"></engine>
         <engine sniffer="web"></engine>
       </module>

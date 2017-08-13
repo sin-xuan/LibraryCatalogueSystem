@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 7, 2017, 10:56:27 AM
+    Author     : zx
+*/
+
+
+body {background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);font-family: Arial; } 
+header { background:lightskyblue; height: 40px; padding: 20px; } 
+
+/* Headings */ 
+header h1 { color: #FFF; margin: 0; } 
+
+.high{position: absolute; left: 3cm; top:2cm;}
+/*.low{position: absolute; left: 200px; top:400px;}*/
+.low{ border-style: dashed; margin:200px 0 0 0; width:25% ;
+         border-radius: 25px;padding: 1cm;float: left}
+
+.titlespace{padding: 50px}
+
+
+.table{ margin: 20px; text-align: center;}
+.list-coloum1-center{text-align: center;height: 1.5cm;width: 5cm}
+.list-coloum2-center{text-align: center;height: 1.5cm;width: 5cm}
+.list-coloum3-center{text-align: center;height: 1.5cm;width: 5cm}
+.list-coloum4-center{text-align: center;height: 1.5cm;width: 5cm}
+.list-coloum5-center{text-align: center;height: 1.5cm;width: 5cm}
+.list-coloum6-center{text-align: center;height: 1.5cm;width: 5cm} 
+.list-row1-bg{background:#4faff0 ;height:1.5cm}
+.list-row1-bg{background:#81bee7;height:1.5cm}
+
+.submitbutton{width:5cm; height:40px; border-radius: 5px; letter-spacing: 2px; font-size: 15px;cursor: pointer;margin: 1cm}

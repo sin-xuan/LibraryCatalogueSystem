@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Search Result</title>
+        <h:outputStylesheet name="css/styleForUserSearch.css" />
+    </h:head>
+    <h:body>
+        <header>
+            <h1>USER SEARCH RESULT</h1>
+            </header>
+        <h:form>
+            <ul class="navigation">
+                <li class="navigationli"> <h:commandLink class="navigationa" action="#{loginManagedBean.logOut()}">LOG OUT</h:commandLink></li>
+            </ul>
+            </h:form>
+        <br/>
+       
+      
+        <div class="high">
+            <h:dataTable value="#{userOperationManagedBean.users}" var="suser" 
+                      styleClass="table" rowClasses="list-row1-bg,list-row2-bg" 
+                      columnClasses="list-coloum1-center,list-coloum2-center,list-coloum3-center,list-coloum4-center,list-coloum5-center,list-coloum6-center,list-coloum7-center">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="User ID"></h:outputText>
+                </f:facet>
+                <h:outputText value="#{suser.uid}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Last Name"></h:outputText>
+                </f:facet>
+                <h:outputText value="#{suser.lastname}"></h:outputText>             
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="First Name"></h:outputText>
+                </f:facet>
+                <h:outputText value="#{suser.firstname}"></h:outputText>             
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email"></h:outputText>
+                </f:facet>
+                <h:outputText value="#{suser.email}"></h:outputText>             
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Details"></h:outputText>
+                </f:facet>
+                 <h:form>
+                     <h:commandLink action="#{userOperationManagedBean.detailsUser()}" value="detail">
+                         <f:param name="user_uid" value="#{suser.uid}"></f:param> 
+                   </h:commandLink>
+               </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="UpdateUser"></h:outputText>
+                </f:facet>
+                 <h:form>
+                     <h:commandButton action="#{userOperationManagedBean.updateExistUserUI()}" value="Update">
+                        <f:param name="user_uid" value="#{suser.uid}"></f:param> 
+                   </h:commandButton>  
+               </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Delete User"></h:outputText>
+                </f:facet>
+                 <h:form>
+                     <h:commandButton action="#{userOperationManagedBean.deleteExistUser()}" value="Delete">
+                        <f:param name="user_uid" value="#{suser.uid}"></f:param> 
+                   </h:commandButton>
+               </h:form>
+            </h:column>
+            
+        </h:dataTable>
+      
+        </div>
+
+        
+        
+        
+        <div>
+        
+<!--get book details-->
+<c:if  test="#{userOperationManagedBean.uflag==1}">
+
+            <div class="low">
+                <ul>
+                    <li class="listspace">
+                         <h:outputLabel value="UID: " />
+                         <h:outputText value="#{userOperationManagedBean.euser.uid}"/> 
+                    </li>
+                    <li class="listspace">
+                         <h:outputLabel value="Lastname: " />
+                         <h:outputText value="#{userOperationManagedBean.euser.lastname}"/> 
+                    </li>
+                    <li class="listspace">
+                         <h:outputLabel value="Firstname: " />
+                         <h:outputText value="#{userOperationManagedBean.euser.firstname}"/> 
+                    </li>
+                    <li class="listspace">
+                         <h:outputLabel value="Email: " />
+                         <h:outputText value="#{userOperationManagedBean.euser.email}"/> 
+                    </li>
+                    <li class="listspace">
+                         <h:outputLabel value="Publisher: " />
+                         <h:outputText value="#{libraryManagedBean.bookr.publisher}"/> 
+                    </li>
+                    <li class="listspace">
+                         <h:outputLabel value="Address: " />
+                         <h:outputText value="#{userOperationManagedBean.euser.address}"/> 
+                    </li>
+                    <li class="listspace">
+                         <h:outputLabel value="Phonenumber:  " />
+                         <h:outputText value="#{userOperationManagedBean.euser.phonenumber}"/> 
+                    </li>            
+            </ul>
+            </div>
+    
+
+  
+        <!--div low end-->
+        </c:if>
+        </div>
+        <h:form>
+             <h:commandButton id="submit3" class="submitbutton" value="Return to search" action="useroperations"/> 
+        </h:form>
+<h:outputText value="#{userOperationManagedBean.deleteMessage}" style="color: red"/>
+    </h:body>
+</html>
+

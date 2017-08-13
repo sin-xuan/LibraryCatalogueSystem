@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Edit Book</title>
+        <h:outputStylesheet name="css/styleForEditBook.css" />
+    </h:head>
+    <h:body>
+        <c:if test="#{libraryManagedBean.bookId!=0}">
+            <header>
+                Update Book
+            </header>
+        </c:if>
+        <c:if test='#{libraryManagedBean.bookId==0}'>   
+            <header>
+                Add Book
+            </header>
+        </c:if>
+        <h:form>
+            <ul class="navigation">
+                <li class="navigationli"> <h:commandLink class="navigationa" action="#{loginManagedBean.logOut()}">LOG OUT</h:commandLink></li>
+            </ul>
+            </h:form>
+        <br/>
+          <hr class="spaceline1"/>
+
+          <center>
+           <h:form class="addbook" >
+            <h:inputHidden value="#{libraryManagedBean.bookId}"></h:inputHidden>
+            <p class="titlespace1">Book ISBN <h:message for="bookisbn"  styleClass="error"/> </p>
+            <h:inputText id="bookisbn" class="addAttributes" value="#{libraryManagedBean.bookr.isbn}" required="true" requiredMessage="You must enter a book ISBN!"/>
+            
+            <p class="titlespace1"> Book Call Number <h:message for="bookcallnumber" styleClass="error"/> </p>
+            <h:inputText id="bookcallnumber" class="addAttributes" value="#{libraryManagedBean.bookr.callnumber}" required="true" requiredMessage="You must enter a book call number!"/>
+            <p class="titlespace1">Book Title</p>
+            <h:inputText class="addAttributes" value="#{libraryManagedBean.bookr.title}"/>
+            <p class="titlespace1">Book Author(s) </p>
+            <h:inputText class="addAttributes" value="#{libraryManagedBean.bookr.authors}"/>
+            <p class="titlespace1">Book Publisher </p>
+            <h:inputText class="addAttributes" value="#{libraryManagedBean.bookr.publisher}"/>
+            <p class="titlespace1">Book Type </p>
+            <h:selectOneMenu class="addAttributes" value="#{libraryManagedBean.bookr.type}">
+                    <f:selectItem itemValue="" itemLabel="" />
+                    <f:selectItem itemValue="General" itemLabel="General" />
+                    <f:selectItem itemValue="Reserved" itemLabel="Reserved" />                   
+                </h:selectOneMenu>
+            <p class="titlespace1">Book Thumbnail </p>
+            <h:inputText class="addAttributes" value="#{libraryManagedBean.bookr.thumbnail}"/>
+            <p class="titlespace1">Book Description </p>
+            <h:inputText class="addAttributes" value="#{libraryManagedBean.bookr.description}"/>
+            <p class="titlespace1">Book Preview URL </p>
+            <h:inputText class="addAttributes" value="#{libraryManagedBean.bookr.previewurl}"/>
+            <br/>
+            
+            <c:if test="#{libraryManagedBean.bookId!=0}">
+                <h:commandButton class="addBookButthon" value="SubmitUpdateInfo" action="#{libraryManagedBean.updateExistBook()}">
+                <f:param name="book_id" value="#{libraryManagedBean.bookr.bid}"></f:param>
+                </h:commandButton>
+            </c:if> 
+            <c:if test='#{libraryManagedBean.bookId==0}'>
+                <h:commandButton class="addBookButthon" value="SubmitNewInfo" action="#{libraryManagedBean.addNewBook()}">
+                    <f:param name="book_id" value="#{libraryManagedBean.bookr.bid}"></f:param>
+                </h:commandButton>
+            </c:if>
+        </h:form>    
+          </center>
+          <c:if test='#{libraryManagedBean.bookId==0}'>
+          <h:outputText value="#{libraryManagedBean.addmessage}" style="color: red"/>
+          </c:if>
+          <c:if test="#{libraryManagedBean.bookId!=0}">
+          <h:outputText value="#{libraryManagedBean.updatemessage}" style="color: red"/>
+          </c:if>
+         <h:form>
+             <h:commandButton id="submit3" class="submitbutton" value="Return to search" action="index"/> 
+        </h:form>
+    </h:body>
+</html>
+

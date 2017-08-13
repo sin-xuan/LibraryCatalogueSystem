@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Edit User</title>
+        <h:outputStylesheet name="css/styleForUser.css" />
+    </h:head>
+    <h:body>
+        <c:if test="#{userOperationManagedBean.userId!=0}">
+            <header>
+                Update User
+            </header>
+        </c:if>
+        <c:if test="#{userOperationManagedBean.userId==0}">   
+            <header>
+                Add User
+            </header>
+        </c:if>
+        <h:form>
+        <ul class="navigation">
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/librarianChoose.xhtml">OPERATION CHOOSE</a></li>
+                <li class="navigationli"> <a class="navigationa" href="http://localhost:8080/LibraryCatalogueSystem-war/faces/editBook.xhtml"> ADD BOOK </a> </li>
+                <li class="navigationli"> <h:commandLink class="navigationa" action="#{loginManagedBean.logOut()}">LOG OUT</h:commandLink></li>
+            </ul>
+        </h:form>
+        <br/>
+          <hr class="spaceline1"/>
+
+          <center>
+           <h:form class="userform" >
+               <c:if test="#{userOperationManagedBean.userId==0}"> 
+                   <p class="titlespace">User ID: <h:message for="userid"  styleClass="error"/> </p> 
+                   <h:inputText id="userid" class="attributes" value="#{userOperationManagedBean.euser.uid}"  required="true" requiredMessage="You must inpur a user ID !">
+  
+                   </h:inputText>
+               </c:if>
+               
+            <p class="titlespace">Last Name:  </p>
+            <h:inputText id="userlname" class="attributes" value="#{userOperationManagedBean.euser.lastname}" validatorMessage="User last name must be pure letters !" >
+                <f:validateRegex for="userlname" pattern="^[A-Za-z]+$"  />
+            </h:inputText>
+            
+            <p class="titlespace">First Name: </p>
+            <h:inputText id="userfname" class="attributes" value="#{userOperationManagedBean.euser.firstname}" validatorMessage="User's first name must be pure letters !" >
+                <f:validateRegex for="userfname" pattern="^[A-Za-z]+$" />
+            </h:inputText>
+            
+            <p class="titlespace">Email: </p>
+            <h:inputText id="useremail" class="attributes" value="#{userOperationManagedBean.euser.email}" validatorMessage="Please input the email within a legal form !" >
+               <f:validateRegex for="useremail" pattern="^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" /> 
+            </h:inputText>
+            
+            <p class="titlespace">Address: <h:message for="useraddress"  styleClass="error"/> </p>
+            <h:inputText id="useraddress" class="attributes" value="#{userOperationManagedBean.euser.address}" required="true" requiredMessage="You must enter an address !"/>
+            
+            <c:if test="#{userOperationManagedBean.userId==0}">
+  
+            <p class="titlespace">Password :  <h:message for="userpassword"  styleClass="error"/> </p>
+            <h:inputText id="userpassword" class="attributes" value="#{userOperationManagedBean.euser.password}" required="true" requiredMessage="You must enter a password !">
+               
+            </h:inputText>
+            
+            
+            <p class="titlespace">Type: <h:message for="usertype"  styleClass="error"/> </p>
+            <h:inputText id="usertype" class="attributes" value="#{userOperationManagedBean.euser.type}" maxlength="1" required="true" requiredMessage="You must enter a type !"/>
+            </c:if>
+            
+            <p class="titlespace">Phone Number: </p>
+            <h:inputText id="userphonenumber" class="attributes" value="#{userOperationManagedBean.euser.phonenumber}" validatorMessage="Phone number should begin with 9 and the length is 8, or begin with 0 and the length is 10 !">
+               <f:validateRegex for="userphonenumber" pattern="^[9][0-9]{7}$|^[0][0-9]{9}$"/>
+            </h:inputText>
+            
+            <br/>
+            <c:if test="#{userOperationManagedBean.userId!=0}">
+                <h:commandButton class="submitButthon" value="SubmitUpdateInfo" action="#{userOperationManagedBean.updateExistUser()}">
+                    <f:param name="user_uid" value="#{userOperationManagedBean.euser.uid}"></f:param>
+                </h:commandButton>
+            </c:if> 
+            <c:if test='#{userOperationManagedBean.userId==0}'>
+                <h:commandButton class="submitButthon" value="SubmitNewInfo" action="#{userOperationManagedBean.addNewUser()}">
+                    <f:param name="user_uid" value="#{userOperationManagedBean.euser.uid}"></f:param>
+                </h:commandButton>
+            </c:if>
+        </h:form>    
+          </center>
+        
+          
+        <h:outputText value="#{userOperationManagedBean.updateMessage}" style="color: red"/>
+    </h:body>
+</html>
+

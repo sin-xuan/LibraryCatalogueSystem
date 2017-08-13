@@ -2,16 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Library Catalogue System</title>
         <h:outputStylesheet name="css/styleForIndex.css" />
     </h:head>
     <h:body>
         <!--start header -->
-        <header>
-        <h1> Library Catalogue System</h1>
-        </header>
+            <header>  <h1> Library Catalogue System</h1>  </header>
         <!-- end header-->
         <!--start article-->
         <article>
@@ -19,34 +18,54 @@
             <p>Please input some attributes of the book you searching for: </p>
             <hr class="spaceline"/>
             <!--form-->
-            <!--div class="searchblock"-->
+           
+            <center>
             <h:form class="indexform">
                 <!--title input-->
-                <p >Title: </p>
+                <p class="titlespace" >Title: </p>
                 <h:inputText id="titleOfBook" class="attributes" label="title" size ="32" value="#{libraryManagedBean.title}" >
                 <f:param name="book_title" value="#{libraryManagedBean.title}"></f:param>
                 </h:inputText>
                 <!--authors input-->
-                <p >Authors: </p>
+                <p class="titlespace">Authors: </p>
                 <h:inputText id="authorsOfBook" class="attributes" label="authors" size ="32" value="#{libraryManagedBean.authors}">
                     <f:param name="book_authors" value="#{libraryManagedBean.authors}"></f:param>
                 </h:inputText>
                 <!--callnumber input-->
-                <p >Call number: </p>
+                <p class="titlespace">Call number: </p>
                 <h:inputText id="callnumberOfBook" class="attributes" label="callnumber" size ="32" value="#{libraryManagedBean.callnumber}"></h:inputText>
                 <!--type input-->
-                <p >Type: </p>
+                <p class="titlespace">Type: </p>
                 <h:selectOneMenu id="typeOfBook" class="attributes" value="#{libraryManagedBean.type}">
                     <f:selectItem itemValue="" itemLabel="" />
                     <f:selectItem itemValue="General" itemLabel="General" />
                     <f:selectItem itemValue="Reserved" itemLabel="Reserved" />                   
                 </h:selectOneMenu>
-               
-                <!--form submit button-->
-                <h:commandButton id="submit" value="Submit" action="#{libraryManagedBean.searchBook()}"/>
-                </h:form>
+                <br/><br/>
+                <!--search book button-->
+                <h:commandButton id="submit" class="submitbutton" value="Search" action="#{libraryManagedBean.searchBook()}"/>
+                <!--view loan button-->
+                <c:if test='#{session.getAttribute("user").type =="M"}'>
+                    <h:commandButton id="submit2" class="submitbutton" value="View My Loans" action="#{libraryManagedBean.searchLoan()}">
+                    <f:param name="user_id" value='#{session.getAttribute("user").uid}'></f:param> 
+                    </h:commandButton>
+                </c:if>
+                <!--Add book button-->
+                <c:if test='#{session.getAttribute("user").type == "L"}'>
+                <h:commandButton id="submit3" class="submitbutton" value="New Book" action="#{libraryManagedBean.addBookUI()}"/> 
+                </c:if>  
+                <h:commandButton class="submitbutton" value="Log Out" action="#{loginManagedBean.logOut()}"/>
+                </h:form>  
+              
                 <!--end form-->
-            <!--/div-->
+            </center>
+           
+                <!--form search button-->
+                <!--h:form-->
+                 
+                
+                
+           
         </article>
         <!--end article-->
         

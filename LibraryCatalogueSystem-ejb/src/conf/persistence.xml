@@ -3,7 +3,12 @@
   <persistence-unit name="LibraryPU" transaction-type="JTA">
     <jta-data-source>java:module/jdbc/librarynew</jta-data-source>
     <class>fit5192.ass.repository.entities.Book</class>
+    <class>fit5192.ass.repository.entities.Librarian</class>
+    <class>fit5192.ass.repository.entities.Loan</class>
+    <class>fit5192.ass.repository.entities.Member</class>
+    <class>fit5192.ass.repository.entities.User</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <validation-mode>AUTO</validation-mode>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>

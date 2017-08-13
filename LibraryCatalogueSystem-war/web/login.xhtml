@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Library_Catalogue_System_Login_in</title>
+    </h:head>
+    <h:body>
+        <header>
+            <h1>
+                Welcome to Library Catalogue System
+            </h1>
+            <h:outputStylesheet name="css/styleForLogin.css" />
+        </header>
+        
+        <!--input user's info.-->
+        <center>
+            <h:form>
+            <p class="userinfohint">Account:</p>
+            <h:inputText class="userinfo" value="#{loginManagedBean.email}"/>
+            <p class="userinfohint">Password</p>
+            <h:inputSecret class="userinfo" value="#{loginManagedBean.password}"/>
+            <br/>
+            <h:commandButton class="loginin" value="Login In" action="#{loginManagedBean.loginInSystem()}"/>
+            <br/>
+             <h:outputText value="#{loginManagedBean.loginMessage}" style="color: red"/>
+        </h:form>
+        </center>
+       
+    </h:body>
+</html>
+

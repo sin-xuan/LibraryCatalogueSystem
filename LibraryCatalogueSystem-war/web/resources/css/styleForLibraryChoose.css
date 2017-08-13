@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 6, 2017, 4:02:58 PM
+    Author     : zx
+*/
+body{background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);}
+header { background-image: linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%); padding: 20px; } 
+.blocktop{margin: 0 auto; height:100px; padding: 20px}
+.blockleft{background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);margin:40px; height: 100px; 
+         border-radius: 100px;padding: 3cm;display: inline-block}
+.blockdown{padding:20px}
+.blockright{background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);margin:40px; height: 100px; 
+         border-radius: 100px;;padding: 3cm;display: inline-block}
+.blockcenter{background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);margin:40px; height: 100px;
+         border-radius: 100px;;padding: 3cm;display: inline-block}
